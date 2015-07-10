@@ -10,7 +10,7 @@ AncUtils.prototype = {
         if (window.location.hostname.indexOf("local") == -1)
             return 'http://www.gendb.net';
         else
-            return 'http://local.gnthackray.net:666';
+            return 'http://local.gendb.net:666';
     },
 
     twaGetJSON: function (url, paramsArg, methodArg, fbArg) {
