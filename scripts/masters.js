@@ -93,7 +93,7 @@ JSMaster.prototype = {
         headersection += '<div>';
         headersection += '<div id="panelA" class = "displayPanel">';
         headersection += '<div class = "mtrlnk">';
-        headersection += '<a id="lnk_home"      href=\'' + that.urlroot + '/HtmlPages/Default.html\'><span>Home</span></a>';
+        headersection += '<a id="lnk_home"      href=\'' + that.urlroot + '/Default.html\'><span>Home</span></a>';
         headersection += '<a id="lnk_marriages" href=\'' + that.urlroot + '/HtmlPages/MarriageSearch.html\'><span>Marriages</span></a>';
         headersection += '<a id="lnk_persons"   href=\'' + that.urlroot + '/HtmlPages/PersonSearch.html\'><span>Persons</span></a>';
         headersection += '<a id="lnk_sources"   href=\'' + that.urlroot + '/HtmlPages/SourceSearch.html\'><span>Sources</span></a>';
@@ -133,14 +133,14 @@ JSMaster.prototype = {
 
 
         headersection += '<div id="fb-root">';
-           headersection += '<fb:login-button autologoutlink="true" perms="email,user_birthday,status_update"></fb:login-button>';
+        headersection += '<fb:login-button autologoutlink="true" perms="email,user_birthday,status_update"></fb:login-button>';
      //   headersection += '<fb:login-button show-faces="false" width=200px!important max-rows="1"></fb:login-button>';
         headersection += '</div>';
 
         headersection += '<div id = "usr_nam"></div>';
         headersection += '</div>';
 
-        headersection += '<div class = "mtrlog">JS Family History</div>';
+        headersection += '<div class = "mtrlog">The GNT Genealogy Database</div>';
         headersection += '<div id="errorDialog" title="Error"></div>';
 
         headersection += '</div>';
