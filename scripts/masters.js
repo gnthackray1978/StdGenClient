@@ -10,7 +10,7 @@ $(document).ready(function () {
         var pageName = location.pathname.split("/").slice(-1);
         
         
-        switch(pageName){
+        switch(pageName[0]){
             case 'MarriageEditor.html':
                 pageName = new AncMarriageEditor();
                 pageName.init();
