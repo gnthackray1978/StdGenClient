@@ -1,6 +1,5 @@
 var JSMaster, QryStrUtils, AncUtils,Panels;
 
-
 $(document).ready(function () {
     var jsMaster = new JSMaster();
 
@@ -9,7 +8,6 @@ $(document).ready(function () {
         ancSourceTypes.init();
     });
 });
-
 
 var AncSourceTypes = function () {
     this.qryStrUtils = new QryStrUtils();

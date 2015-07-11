@@ -3,20 +3,22 @@ var JSMaster, QryStrUtils, AncUtils,AncSelectorSources;
 
  
 
-$(document).ready(function () {
-    var jsMaster = new JSMaster();
+// $(document).ready(function () {
+//     var jsMaster = new JSMaster();
 
 
-    console.log('marriage editor ready');
-
-    jsMaster.generateHeader('#1', function () {
+    
+//     jsMaster.generateHeader('#1', function () {
         
-        var ancMarriageEditor = new AncMarriageEditor();
-        ancMarriageEditor.init();
+//         var page = new AncMarriageEditor();
+        
+//         var pageName = window.location;
+        
+//         page.init();
 
-    });
+//     });
 
-});
+// });
 
 
 var AncMarriageEditor = function () {

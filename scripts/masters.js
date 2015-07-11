@@ -1,5 +1,32 @@
 
+$(document).ready(function () {
+    var jsMaster = new JSMaster();
 
+
+    console.log('marriage editor ready');
+
+    jsMaster.generateHeader('#1', function () {
+        
+        var pageName = location.pathname.split("/").slice(-1);
+        
+        
+        switch(pageName){
+            case 'MarriageEditor.html':
+                pageName = new AncMarriageEditor();
+                pageName.init();
+                break;
+            
+            case 'MarriageSearch.html':
+                pageName = new AncMarriages();
+                pageName.init();
+                break;
+        }
+        
+        
+
+    });
+
+});
 
 
 
@@ -22,6 +49,9 @@ var JSMaster = function () {
 
     console.log('finished creating JSMaster');
 };
+
+
+
 
 
 JSMaster.prototype = {
