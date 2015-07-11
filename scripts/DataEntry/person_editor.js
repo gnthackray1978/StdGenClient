@@ -35,7 +35,7 @@ AncPersonEditor.prototype = {
 
     init: function () {
 
-
+        
         var panels = new Panels();
 
         $('body').on("click", "#save", $.proxy(function () { this.save(); return false; }, this));
@@ -53,6 +53,7 @@ AncPersonEditor.prototype = {
         var params = {};
         params[0] = this.qryStrUtils.getParameterByName('id', '');
 
+        console.log('person editor getting data:');
         this.ancUtils.twaGetJSON(this.DEFAULT_GET_URL, params, $.proxy(this.processData, this));
     },
 
