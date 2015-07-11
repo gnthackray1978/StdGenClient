@@ -193,11 +193,14 @@ JSMaster.prototype = {
         $('body').on("click", "#lnk_prevback", $.proxy(function () { that.imageTools.prevBackground(); return false; }, that));
         $('body').on("click", "#lnk_nextback", $.proxy(function () { that.imageTools.nextBackground(); return false; }, that));
 
+        console.log('attempting to connect to facebook');
+        
         this.connectfacebook(function () {
             console.log('facebook loaded');
+            readyfunction.call();
         });
 
-        readyfunction.call();
+        
 
        
     },
