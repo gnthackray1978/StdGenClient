@@ -83,12 +83,6 @@ JSMaster.prototype = {
                     $('#usr_nam').html(data);
                 });
 
-                params[0] ='de9937f4-5850-463f-af99-25c381fe5f3';
-                
-ancUtils.twaGetJSON("/PersonService/Person", params, function (data) {
-                  console.log(data);
-                });
-
                 console.log('jsmaster init facebookReady.apply');
                 if (window.facebookReady != null) {
                     console.log('jsmaster init facebookReady.apply confirmed to go');
