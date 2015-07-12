@@ -1,20 +1,3 @@
-﻿
-
-
-
-
-
-$(document).ready(function () {
-    var jsMaster = new JSMaster();
-
-    jsMaster.generateHeader('#1', function () {
-        var bc = new BatchCore();
-        bc.run();
-
-    });
-
-});
-
 
 var BatchCore = function () {
     this.DEFAULT_PARISHSEARCHPAGE_URL = '../HtmlPages/ParishSearch.html';

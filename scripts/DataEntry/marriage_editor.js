@@ -1,26 +1,6 @@
 
 var JSMaster, QryStrUtils, AncUtils,AncSelectorSources;
 
- 
-
-// $(document).ready(function () {
-//     var jsMaster = new JSMaster();
-
-
-    
-//     jsMaster.generateHeader('#1', function () {
-        
-//         var page = new AncMarriageEditor();
-        
-//         var pageName = window.location;
-        
-//         page.init();
-
-//     });
-
-// });
-
-
 var AncMarriageEditor = function () {
     this.qryStrUtils = new QryStrUtils();
     this.ancUtils = new AncUtils();

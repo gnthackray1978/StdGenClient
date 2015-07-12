@@ -1,22 +1,5 @@
 var JSMaster,QryStrUtils,AncUtils,Panels;
 
-
-
-// $(document).ready(function () {
-//     var jsMaster = new JSMaster();
-
-//     console.log('person ready');
-
-//     jsMaster.generateHeader('#1', function () {
-//         console.log('person header generated');
-//         var ancPersons = new AncPersons();
-//         ancPersons.init();
-
-//     });
-
-// });
-
-
 var AncPersons = function () {
     this.qryStrUtils = new QryStrUtils();
     this.selectorTools = new SelectorTools();

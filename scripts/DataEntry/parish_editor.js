@@ -1,17 +1,5 @@
 var JSMaster, QryStrUtils, AncUtils,AncParishEditor;
 
-// $(document).ready(function () {
-//     var jsMaster = new JSMaster();
-
-//     jsMaster.generateHeader('#1', function () {
-        
-//         var ancParishEditor = new AncParishEditor();
-//         ancParishEditor.init();
-
-//     });
-
-// });
-
 var AncParishEditor = function () {
     this.qryStrUtils = new QryStrUtils();
     this.ancUtils = new AncUtils();

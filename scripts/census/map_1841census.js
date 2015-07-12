@@ -1,19 +1,5 @@
 
 var JSMaster, QryStrUtils, AncUtils, google;
- 
-
-// $(document).ready(function () {
-    
-//     var jsMaster = new JSMaster();
-//     var censusMap = new CensusMap();
-
-//     jsMaster.connectfacebook(function () {        
-
-//         censusMap.init();
-
-//     });
-
-// });
 
 var CensusMap = function () {
     this.qryStrUtils = new QryStrUtils();

@@ -1,24 +1,5 @@
 var JSMaster, QryStrUtils,AncUtils,Panels,SourceTypeLookup;
 
-//var setDefaultPersonUrl = getHost() + "/settreepersons/Set";
-//var saveSourceUrl = getHost() + "/SaveTree/Save";
-
-//var deleteSourceUrl = getHost() + "/Source/Delete";
-
-
-// $(document).ready(function () {
-//     var jsMaster = new JSMaster();
-
-
-//     jsMaster.generateHeader('#1', function () {
-//         var ancSources = new AncSources();
-//         ancSources.init();
-
-//     });
-
-// });
-
-
 var AncSources = function () {
     this.qryStrUtils = new QryStrUtils();
     this.selectorTools = new SelectorTools();

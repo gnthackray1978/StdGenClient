@@ -7,7 +7,13 @@ var AncUtils = function () {
 AncUtils.prototype = {
 
     getHost: function () {
-        if (window.location.hostname.indexOf("local") == -1)
+        
+        //console.log(window.location);
+        
+        
+        
+        //if (window.location.hostname.indexOf("local") == -1)
+        if (window.location.indexOf("local") == -1)
             return 'http://www.gendb.net';
         else
             return 'http://local.gendb.net:666';

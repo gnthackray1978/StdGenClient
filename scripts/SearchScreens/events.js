@@ -1,20 +1,4 @@
-
 var JSMaster, QryStrUtils, AncUtils,Panels;
-
- 
-
-
-// $(document).ready(function () {
-//     var jsMaster = new JSMaster();
-//     var ancEvents = new AncEvents();
-
-//     jsMaster.generateHeader('#1', function () {
-//         ancEvents.init();
-
-//     });
-
-// });
-
 
 var AncEvents = function () {
     this.qryStrUtils = new QryStrUtils();
