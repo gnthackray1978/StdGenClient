@@ -1,33 +1,28 @@
 
-// $(document).ready(function () {
-//     var jsMaster = new JSMaster();
+$(document).ready(function () {
+    var jsMaster = new JSMaster();
+    
+    //console.log('marriage editor ready');
 
-
-
-//     console.log('marriage editor ready');
-
-//     jsMaster.generateHeader('#1', function () {
+    jsMaster.generateHeader('#1', function () {
         
-//         var pageName = location.pathname.split("/").slice(-1);
+        var pageName = location.pathname.split("/").slice(-1);
         
-        
-//         switch(pageName[0]){
-//             case 'MarriageEditor.html':
-//                 pageName = new AncMarriageEditor();
-//                 pageName.init();
-//                 break;
+        switch(pageName[0]){
+            case 'MarriageEditor.html':
+                pageName = new AncMarriageEditor();
+                pageName.init();
+                break;
             
-//             case 'MarriageSearch.html':
-//                 pageName = new AncMarriages();
-//                 pageName.init();
-//                 break;
-//         }
+            case 'MarriageSearch.html':
+                pageName = new AncMarriages();
+                pageName.init();
+                break;
+        }
         
-        
+    });
 
-//     });
-
-// });
+});
 
 
 
