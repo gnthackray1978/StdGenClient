@@ -76,10 +76,8 @@ JSMaster.prototype = {
                 //window.getLoggedInUserName();
                 console.log('jsmaster init connected');
                 
-                var params = {};
-                params[0] = 'hello';
                 var ancUtils = new AncUtils();
-                ancUtils.twaGetJSON("/TestLogin", params, function (data) {
+                ancUtils.twaGetJSON("/LoggedInUserName", {}, function (data) {
                     $('#usr_nam').html(data);
                 });
 
