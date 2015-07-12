@@ -1,15 +1,15 @@
 var JSMaster, QryStrUtils, AncUtils;
 
-$(document).ready(function () {
-    var jsMaster = new JSMaster();
+// $(document).ready(function () {
+//     var jsMaster = new JSMaster();
  
-    jsMaster.generateHeader('#1', function () {        
-        var ancSourceTypeEditor = new AncSourceTypeEditor();
-        ancSourceTypeEditor.init();
+//     jsMaster.generateHeader('#1', function () {        
+//         var ancSourceTypeEditor = new AncSourceTypeEditor();
+//         ancSourceTypeEditor.init();
 
-    });
+//     });
 
-});
+// });
 
 
 

@@ -18,6 +18,56 @@ $(document).ready(function () {
                 pageName = new AncMarriages();
                 pageName.init();
                 break;
+                
+            case 'batchEntry.html':
+                pageName = new BatchCore();
+                pageName.init();
+                break;
+            case 'Events.html':
+                pageName = new AncEvents();
+                pageName.init();
+                break;
+            case 'MapView.html':
+                pageName = new GeneralMap();
+                pageName.init();
+                break;
+            case 'MapViewCensus.html':
+                pageName = new CensusMap();
+                pageName.init();
+                break;
+            case 'ParishEditor.html':
+                pageName = new AncParishEditor();
+                pageName.init();
+                break;
+            case 'ParishSearch.html':
+                pageName = new AncParishs();
+                pageName.init();
+                break;
+            case 'PersonEditor.html':
+                pageName = new AncPersonEditor();
+                pageName.init();
+                break;
+            case 'PersonSearch.html':
+                pageName = new AncPersons();
+                pageName.init();
+                break;
+            case 'SourceEditor.html':
+                pageName = new AncSourceEditor();
+                pageName.init();
+                break;
+            case 'SourceSearch.html':
+                pageName = new AncSources();
+                pageName.init();
+                break;
+            case 'SourceTypeEditor.html':
+                pageName = new AncSourceTypeEditor();
+                pageName.init();
+                break;
+            case 'SourceTypesSearch.html':
+                pageName = new AncSourceTypes();
+                pageName.init();
+                break;
+              
         }
         
     });

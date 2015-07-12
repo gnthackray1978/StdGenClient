@@ -2,18 +2,18 @@
 var JSMaster, QryStrUtils, AncUtils, google;
  
 
-$(document).ready(function () {
+// $(document).ready(function () {
     
-    var jsMaster = new JSMaster();
-    var censusMap = new CensusMap();
+//     var jsMaster = new JSMaster();
+//     var censusMap = new CensusMap();
 
-    jsMaster.connectfacebook(function () {        
+//     jsMaster.connectfacebook(function () {        
 
-        censusMap.init();
+//         censusMap.init();
 
-    });
+//     });
 
-});
+// });
 
 var CensusMap = function () {
     this.qryStrUtils = new QryStrUtils();

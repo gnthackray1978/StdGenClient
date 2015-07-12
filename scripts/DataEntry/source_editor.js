@@ -1,16 +1,16 @@
 
 var JSMaster, QryStrUtils, AncUtils,AncSelectorParishs,AncSelectorSourceTypes,Panels;
 
-$(document).ready(function () {
-    var jsMaster = new JSMaster();
+// $(document).ready(function () {
+//     var jsMaster = new JSMaster();
 
-    jsMaster.generateHeader('#1', function () {
-        var ancSourceEditor = new AncSourceEditor();
-            ancSourceEditor.init();
+//     jsMaster.generateHeader('#1', function () {
+//         var ancSourceEditor = new AncSourceEditor();
+//             ancSourceEditor.init();
 
-    });
+//     });
 
-});
+// });
 
 var AncSourceEditor = function () {
     this.qryStrUtils = new QryStrUtils();

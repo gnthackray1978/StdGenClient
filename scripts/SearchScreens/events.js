@@ -4,16 +4,16 @@ var JSMaster, QryStrUtils, AncUtils,Panels;
  
 
 
-$(document).ready(function () {
-    var jsMaster = new JSMaster();
-    var ancEvents = new AncEvents();
+// $(document).ready(function () {
+//     var jsMaster = new JSMaster();
+//     var ancEvents = new AncEvents();
 
-    jsMaster.generateHeader('#1', function () {
-        ancEvents.init();
+//     jsMaster.generateHeader('#1', function () {
+//         ancEvents.init();
 
-    });
+//     });
 
-});
+// });
 
 
 var AncEvents = function () {

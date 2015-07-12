@@ -1,16 +1,16 @@
 var JSMaster, QryStrUtils, AncUtils,AncParishEditor;
 
-$(document).ready(function () {
-    var jsMaster = new JSMaster();
+// $(document).ready(function () {
+//     var jsMaster = new JSMaster();
 
-    jsMaster.generateHeader('#1', function () {
+//     jsMaster.generateHeader('#1', function () {
         
-        var ancParishEditor = new AncParishEditor();
-        ancParishEditor.init();
+//         var ancParishEditor = new AncParishEditor();
+//         ancParishEditor.init();
 
-    });
+//     });
 
-});
+// });
 
 var AncParishEditor = function () {
     this.qryStrUtils = new QryStrUtils();

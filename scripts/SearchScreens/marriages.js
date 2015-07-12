@@ -3,6 +3,7 @@ var JSMaster, QryStrUtils, AncUtils,Panels;
  
 
 
+
 // $(document).ready(function () {
 //     var jsMaster = new JSMaster();
 
