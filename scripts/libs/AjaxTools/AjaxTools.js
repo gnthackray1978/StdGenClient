@@ -13,7 +13,7 @@ AncUtils.prototype = {
         
         
         //if (window.location.hostname.indexOf("local") == -1)
-        if (window.location.indexOf("local") == -1)
+        if (window.location.href.indexOf("local") == -1)
             return 'http://www.gendb.net';
         else
             return 'http://local.gendb.net:666';
