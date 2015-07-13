@@ -137,8 +137,8 @@ GeneralMap.prototype = {
         }
 
         this.zoomLevel = this.map.getZoom();
-
-
+        
+        console.log('map zoom: ' + this.zoomLevel);
 
         if (this.zoomLevel < 12) {
             this.deleteOverlays();
@@ -156,8 +156,7 @@ GeneralMap.prototype = {
     },
 
     loadParish: function (locats) {
-        // var url = getHost() + "/ParishService/GetParishsFromLocations";
-
+        
         var params = {};
 
         if (locats == '') {
