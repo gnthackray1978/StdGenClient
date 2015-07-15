@@ -117,7 +117,7 @@ GeneralMap.prototype = {
         this.ancUtils.twaGetJSON(this.DEFAULT_PARISHTYPES_URL, undefined, 
             function(data){
                 that.mapParishs.loadParishTypes(data);
-                this.DrawMap();
+                that.DrawMap();
             });
     },
 
