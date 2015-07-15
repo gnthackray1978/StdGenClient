@@ -31,7 +31,8 @@ AncUtils.prototype = {
             beforeSend: $.proxy(this._addFBToHeader(), this),
             error: function (request, status, error) {
                 //    alert(request.responseText);
-            }
+            },
+            timeout: 3000000 // sets timeout to 3 seconds
         });
     },
 
