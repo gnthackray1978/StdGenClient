@@ -67,7 +67,7 @@ GeneralMap.prototype = {
     init: function (selectorid, readyfunction) {
 
 
-
+        var that = this;
         var latLng = new google.maps.LatLng(53.957700, -1.082290);
         var homeLatLng = new google.maps.LatLng(53.957700, -1.082290);
 
@@ -105,25 +105,20 @@ GeneralMap.prototype = {
             }
         });
         this.setMapDetail();
-        var params = {};
-        this.ancUtils.twaGetJSON(this.DEFAULT_PARISHTYPES_URL, params, $.proxy(this.mapParishs.loadParishTypes, this.mapParishs));
-
-    //    var that = this;
-
-        //twaGetJSON('/ParishService/GetParishsTypes', params, loadParishTypes);
+        
         google.maps.event.addListener(this.map, 'dragend', $.proxy(this.DrawMap, this));
 
         google.maps.event.addListener(this.map, 'zoom_changed', $.proxy(this.DrawMap, this));
-        //function () { that.DrawMap(); });
+     
+        $('body').on("click","#getStatus", $.proxy(this.getStatus, this)); 
 
-        //$.proxy(function () { this.getStatus(); return false; }, this)
-        //$.proxy(, this)
-
-        $('body').on("click","#getStatus", $.proxy(this.getStatus, this)); //function () { that.getStatus(); return false; });
-
-        $('body').on("click","#locateParish", $.proxy(this.locateParish, this)); //function () { that.locateParish(); return false; });
-
-        this.DrawMap();
+        $('body').on("click","#locateParish", $.proxy(this.locateParish, this));
+        
+        this.ancUtils.twaGetJSON(this.DEFAULT_PARISHTYPES_URL, undefined, 
+            function(data){
+                that.mapParishs.loadParishTypes(data);
+                this.DrawMap();
+            });
     },
 
     DrawMap: function () {
