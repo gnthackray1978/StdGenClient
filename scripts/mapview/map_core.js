@@ -1,4 +1,4 @@
-﻿
+
 
 
 
@@ -228,10 +228,7 @@ GeneralMap.prototype = {
 
         var params = {};
         params[0] = parishId;
-        // $.ajaxSetup({ cache: false });
-
-        //$.getJSON(getHost() + "/ParishService/GetParishDetails", params, function (result) {
-
+       
         var infowindowloaded = 0;
 
         //basically cache what we've already downloaded
@@ -403,6 +400,18 @@ GeneralMap.prototype = {
             }
             laty += 0.1;
             YIdx++;
+        }
+
+        var idx=0;
+        
+        while(idx < newArea.length){
+            
+            // are 2 areas adjacent
+            
+            
+            
+            if((newArea[idx].latx + newArea[idx].boxlen) == 
+            idx++;
         }
 
         //   Debug.WriteLine("areas count: " + downloadedArea.Count);
