@@ -1,29 +1,24 @@
-
-
-
-
-
 var JSMaster, QryStrUtils, AncUtils, google, MapParishs, MapSources;
 
 
-$(document).ready(function () {
+// $(document).ready(function () {
 
-    var jsMaster = new JSMaster();
-    var headersection = '';
+//     var jsMaster = new JSMaster();
+//     var headersection = '';
 
-    headersection += '<div id="fb-root">';
-    headersection += '<fb:login-button autologoutlink="true" &nbsp;perms="email,user_birthday,status_update,publish_stream"></fb:login-button>';
-    headersection += '</div>';
+//     headersection += '<div id="fb-root">';
+//     headersection += '<fb:login-button autologoutlink="true" &nbsp;perms="email,user_birthday,status_update,publish_stream"></fb:login-button>';
+//     headersection += '</div>';
 
-    $('#1').html(headersection);
+//     $('#1').html(headersection);
 
-    jsMaster.connectfacebook(function () {
-        var generalMap = new GeneralMap();
-        generalMap.init();
+//     jsMaster.connectfacebook(function () {
+//         var generalMap = new GeneralMap();
+//         generalMap.init();
 
-    });
+//     });
 
-});
+// });
 
 var GeneralMap = function () {
     this.DEFAULT_PARISHTYPES_URL = '/ParishService/GetParishsTypes';
@@ -402,17 +397,19 @@ GeneralMap.prototype = {
             YIdx++;
         }
 
-        var idx=0;
+        // var idx=0;
         
-        while(idx < newArea.length){
+        // while(idx < newArea.length){
             
-            // are 2 areas adjacent
+        //     // are 2 areas adjacent
             
             
             
-            if((newArea[idx].latx + newArea[idx].boxlen) == 
-            idx++;
-        }
+        //     var rightAdj = ((newArea[idx].latx + newArea[idx].boxlen) == newArea[idx + 1].latx);
+            
+            
+        //     idx++;
+        // }
 
         //   Debug.WriteLine("areas count: " + downloadedArea.Count);
         return this.MakeSquareCSV(newArea);
