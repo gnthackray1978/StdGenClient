@@ -208,7 +208,7 @@ AncMarriages.prototype = {
             tableBody += '<td><a id= "s' + _idx + '" href=""><div>' + sourceInfo.MarriageDate + '</div></a></td>';
             selectEvents.push({ key: 's' + _idx, value: sourceInfo.MarriageId });
 
-            tableBody += '<td><a href="'+this.DEFAULT_MARRIAGEEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
+            tableBody += '<td><a href="'+that.DEFAULT_MARRIAGEEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
 
             tableBody += '<td><div>' + sourceInfo.MaleCName + '</div></td>';
             
