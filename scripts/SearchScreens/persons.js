@@ -232,7 +232,7 @@ AncPersons.prototype = {
             dupeEvents.push({ key: 'd' + _idx, value: sourceInfo.UniqueReference });
 
 
-            tableBody += '<td><a href="' + this.DEFAULT_PERSONEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
+            tableBody += '<td><a href="' + that.DEFAULT_PERSONEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
 
 
             if (sourceInfo.SourceDateStr == '')
