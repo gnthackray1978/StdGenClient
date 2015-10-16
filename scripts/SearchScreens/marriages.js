@@ -205,7 +205,7 @@ AncMarriages.prototype = {
             tableBody += '<td><a id= "d' + _idx + '" href=""><div>' + sourceInfo.TotalEvents + '</div></a></td>';
             dupeEvents.push({ key: 'd' + _idx, value: sourceInfo.UniqueRef });
 
-            tableBody += '<td><a id= "s' + _idx + '" href=""><div>' + sourceInfo.MarriageDate + '</div></a></td>';
+            tableBody += '<td><a id= "s' + _idx + '" href="" title="'+ sourceInfo.Notes +'"><div>' + sourceInfo.MarriageDate + '</div></a></td>';
             selectEvents.push({ key: 's' + _idx, value: sourceInfo.MarriageId });
 
             tableBody += '<td><a href="'+that.DEFAULT_MARRIAGEEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
