@@ -10,9 +10,9 @@ AncUtils.prototype = {
         
         //console.log(window.location);
  
-       // if (window.location.href.indexOf("local") == -1)
-       //     return 'http://www.gendb.net';
-      //  else
+        if (window.location.href.indexOf("local") == -1)
+            return 'http://www.gendb.net';
+        else
             return 'http://local.gendb.net:666';
     },
 
