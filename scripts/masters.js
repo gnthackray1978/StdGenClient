@@ -214,7 +214,7 @@ JSMaster.prototype = {
         headersection += '<div id = "usr_nam"></div>';
         headersection += '</div>';
 
-        headersection += '<div class = "mtrlog">Personal Genealogy Database</div>';
+        headersection += '<div class = "mtrlog">Georges Genealogy Database</div>';
         headersection += '<div id="errorDialog" title="Error"></div>';
 
         headersection += '</div>';
