@@ -150,7 +150,7 @@ AncParishs.prototype = {
             selectEvents.push({ key: 's' + _idx, value: sourceInfo.ParishId });
 
             tableBody += '<td><div>' + sourceInfo.ParishDeposited + '</div></td>';
-            tableBody += '<td><a href="' + this.DEFAULT_PARISHEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
+            tableBody += '<td><a href="' + that.DEFAULT_PARISHEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
             tableBody += '<td><div>' + sourceInfo.ParishParent + '</div></td>';
             tableBody += '<td><div>' + sourceInfo.ParishStartYear + '</div></td>';
             tableBody += '<td><div>' + sourceInfo.ParishEndYear + '</div></td>';
