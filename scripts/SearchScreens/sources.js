@@ -179,7 +179,7 @@ AncSources.prototype = {
             var _loc = window.location.hash;
             _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', sourceInfo.SourceId);
 
-            tableBody += '<td><a href="' + this.DEFAULT_SOURCEEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
+            tableBody += '<td><a href="' + that.DEFAULT_SOURCEEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
 
             tableBody += '<td class = "sourceref" ><a  id= "s' + _idx + '" href="" ><div title="' + sourceInfo.SourceRef + '">' + sourceInfo.SourceRef + '</div></a></td>';
 
