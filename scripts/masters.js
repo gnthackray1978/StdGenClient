@@ -178,18 +178,13 @@ JSMaster.prototype = {
         headersection += '<div class = "mtrlnk">';
         headersection += '<a id="lnk_parishs"       href=\'' + that.urlroot + '/HtmlPages/ParishSearch.html\'><span>Parishs</span></a>';
         headersection += '<a id="lnk_TotalEvents"        href=\'' + that.urlroot + '/HtmlPages/Events.html\'><span>Events</span></a>';
-        headersection += '<a id="lnk_batchTotalEvents"   href=\'' + that.urlroot + '/HtmlPages/batchEntry.html\'><span>Batch Entry</span></a>';
+        headersection += '<a id="lnk_batchTotalEvents"   href=\'' + that.urlroot + '/HtmlPages/BatchSearch.html\'><span>Batch Search</span></a>';
         headersection += '<a id="lnk_files"         href=\'' + that.urlroot + '/Forms/FrmFiles.aspx\'><span>Files</span></a>';
         headersection += '<a id="lnk_sourcetypes"   href=\'' + that.urlroot + '/HtmlPages/SourceTypesSearch.html\'><span>Source Types</span></a>';
         headersection += '</div>';
         headersection += '</div>';
         headersection += '<div id="panelC" class = "hidePanel">';
         headersection += '<div class = "mtrlnk">';
-
-
-        headersection += '<a id="lnk_importparishs" href=\'' + that.urlroot + '/Forms/FrmImportCSV.aspx?Type=PARISH\'><span>Import Parishs</span></a>';
-        headersection += '<a id="lnk_importmarriages" href=\'' + that.urlroot + '/Forms/FrmImportCSV.aspx?Type=MAR\'><span>Import Marriages</span></a>';
-        headersection += '<a id="lnk_importsources" href=\'' + that.urlroot + '/Forms/FrmImportCSV.aspx?Type=SOURCE\'><span>Import Sources</span></a>';
         headersection += '<a id="lnk_viewtrees" href=\'' + that.urlroot + '/HtmlPages/TreeSearch.html\'><span>View Trees</span></a>';
         headersection += '</div>';
         headersection += '</div>';
