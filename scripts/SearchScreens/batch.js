@@ -76,10 +76,12 @@ BatchSearch.prototype = {
         var selectEvents = [];
         var _idx = 0;
         var that = this;
-
+        var gDateTime = new GDateTime();
 
 
         $.each(data.batchContents, function (source, sourceInfo) {
+            
+            var jDate = gDateTime.getDateFromDOTNet(sourceInfo.TimeRun);
          
             var hidPID = '<input type="hidden" name="RowId" id="RowId" value ="' + sourceInfo.Id + '"/>';
 
@@ -99,7 +101,7 @@ BatchSearch.prototype = {
             tableBody += '<td><a id= "s' + _idx + '" href="" ><div>' + sourceInfo.Ref + '</div></a></td>';
             selectEvents.push({ key: 's' + _idx, value: sourceInfo.Id });
 
-            tableBody += '<td><div>' + sourceInfo.TimeRun + '</div></td>';
+            tableBody += '<td><div>' + jDate.toUTCString(); + '</div></td>';
             tableBody += '<td><div>' + sourceInfo.IsDeleted + '</div></td>';
             tableBody += '<td><a href ><div> DeleteBatch </div></a></td>';
 
