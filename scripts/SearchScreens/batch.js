@@ -77,29 +77,26 @@ BatchSearch.prototype = {
 
     processData: function (data) {
 
-
-        var _idx = 0;
-       // var that = this;
         var gDateTime = new GDateTime();
 
         var batchContents = [];
 
-        $.each(data.batchContents, function (source, sourceInfo) {
+        $.each(data.batchContents, function (idx, value) {
             
             var rowObj ={
-                id :sourceInfo.Id,
-                idx :_idx,
+                id :value.Id,
+                idx :idx,
                 column1 : {
                     isLink :true,
-                    ref : sourceInfo.Ref
+                    ref : value.Ref
                 },
                 column2 : {
                     isLink :false,
-                    ref : gDateTime.getDateFromDOTNet(sourceInfo.TimeRun).toUTCString()
+                    ref : gDateTime.getDateFromDOTNet(value.TimeRun).toUTCString()
                 },
                 column3 : {
                     isLink :false,
-                    ref : sourceInfo.IsDeleted
+                    ref : value.IsDeleted
                 },
                 column4 : {
                     isLink :true,
@@ -111,33 +108,6 @@ BatchSearch.prototype = {
                 }
             };
             
-            // var jDate = gDateTime.getDateFromDOTNet(sourceInfo.TimeRun);
-         
-            // var hidPID = '<input type="hidden" name="RowId" id="RowId" value ="' + sourceInfo.Id + '"/>';
-
-
-            // var arIdx = jQuery.inArray(sourceInfo.Id, this.selection);
-
-            // if (arIdx >= 0) {
-            //     tableBody += '<tr class = "highLightRow">' + hidPID;
-            // }
-            // else {
-            //     tableBody += '<tr>' + hidPID;
-            // }
-
-            //var _loc = window.location.hash;
-            //_loc = that.qryStrUtils.updateStrForQry(_loc, 'id', sourceInfo.Id);
-
-            // tableBody += '<td><a id= "s' + _idx + '" href="" ><div>' + sourceInfo.Ref + '</div></a></td>';
-            // selectEvents.push({ key: 's' + _idx, value: sourceInfo.Id });
-
-            // tableBody += '<td><div>' + jDate.toUTCString(); + '</div></td>';
-            // tableBody += '<td><div>' + sourceInfo.IsDeleted + '</div></td>';
-            // tableBody += '<td><a href ><div> View Records </div></a></td>';
-            // tableBody += '<td><a href ><div> Delete Records </div></a></td>';
-
-            // tableBody += '</tr>';
-            _idx++;
             batchContents.push(rowObj);
         });
         

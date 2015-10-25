@@ -89,6 +89,8 @@ TableMaker.prototype = {
         
     processSelect: function (evt) {
         this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#RowId");
+        
+        console.log(evt);
     },
     UpdateRecordCount: function (count){
         $('#reccount').html(count + ' Batches');
