@@ -67,6 +67,10 @@ $(document).ready(function () {
                 pageName = new AncSourceTypes();
                 pageName.init();
                 break;
+            case 'BatchSearch.html':
+                pageName = new BatchSearch();
+                pageName.init();
+                break;
               
         }
         
