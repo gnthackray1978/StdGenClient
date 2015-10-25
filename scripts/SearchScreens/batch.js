@@ -103,7 +103,8 @@ BatchSearch.prototype = {
 
             tableBody += '<td><div>' + jDate.toUTCString(); + '</div></td>';
             tableBody += '<td><div>' + sourceInfo.IsDeleted + '</div></td>';
-            tableBody += '<td><a href ><div> DeleteBatch </div></a></td>';
+            tableBody += '<td><a href ><div> View Records </div></a></td>';
+            tableBody += '<td><a href ><div> Delete Records </div></a></td>';
 
             tableBody += '</tr>';
         });
@@ -124,12 +125,12 @@ BatchSearch.prototype = {
 
             this.pager.createpager(pagerparams);
 
-            $('#reccount').html(data.Total + ' Source Types');
+            $('#reccount').html(data.Total + ' Batches');
         }
         else {
 
             $('#search_bdy').html(tableBody);
-            $('#reccount').html('0 Source Types');
+            $('#reccount').html('0 Batches');
         }
 
         this.selectorTools.addlinks(selectEvents, this.processSelect, this);
