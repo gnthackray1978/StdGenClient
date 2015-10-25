@@ -79,7 +79,12 @@ BatchSearch.prototype = {
 
         var gDateTime = new GDateTime();
 
-        var batchContents = [];
+        var tableData = {
+            column1Func : function(){console.log('hello1');},
+            column4Func : function(){console.log('hello4');},
+            column5Func : function(){console.log('hello5');},
+            rows : []
+        }; 
 
         $.each(data.batchContents, function (idx, value) {
             
@@ -108,7 +113,7 @@ BatchSearch.prototype = {
                 }
             };
             
-            batchContents.push(rowObj);
+            tableData.rows.push(rowObj);
         });
         
         var pagerparams = { ParentElement: 'pager',
@@ -119,7 +124,7 @@ BatchSearch.prototype = {
             Context: this
         };
         
-        this.tableMaker.MakeBody(batchContents,pagerparams)
+        this.tableMaker.MakeBody(tableData,pagerparams)
     },
 
     sort: function (sort_col) {

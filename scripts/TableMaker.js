@@ -2,19 +2,21 @@ var TableMaker = function() {
     this.selectorTools = new SelectorTools();
     this.pager = new Pager();
     this.qryStrUtils = new QryStrUtils();
-    //
+    this.tableData;
     this.selection = [];
 }
 
 TableMaker.prototype = {
-    MakeBody : function(batchContents, pagerparams){
+    MakeBody : function(tableData, pagerparams){
+        
+        this.tableData = tableData;
         
         var tableBody = '';
         var selectEvents = [];
     
         var that = this;
 
-        $.each(batchContents, function (index, value) {
+        $.each(tableData.rows, function (index, value) {
             tableBody += that.makeRow(value, selectEvents);  
         });
 
@@ -90,6 +92,9 @@ TableMaker.prototype = {
     processSelect: function (evt) {
         this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#RowId");
         
+        if(this.tableData && this.tableData.column1Func)
+            this.tableData.column1Func(evt);
+            
         console.log(evt);
     },
     UpdateRecordCount: function (count){
