@@ -1,3 +1,7 @@
+/*POSTMAN CHROME EXTENSION
+MANOWAR SLEIPNIR
+*/
+
 var JSMaster, QryStrUtils, AncUtils,Panels;
 
 // $(document).ready(function () {
@@ -78,35 +82,118 @@ BatchSearch.prototype = {
         var that = this;
         var gDateTime = new GDateTime();
 
+        var batchContents = [];
 
         $.each(data.batchContents, function (source, sourceInfo) {
             
-            var jDate = gDateTime.getDateFromDOTNet(sourceInfo.TimeRun);
+            var rowObj ={
+                id :sourceInfo.Id,
+                idx :_idx,
+                column1 : {
+                    isLink :true,
+                    ref : sourceInfo.Ref
+                },
+                column2 : {
+                    isLink :false,
+                    ref : gDateTime.getDateFromDOTNet(sourceInfo.TimeRun).toUTCString()
+                },
+                column3 : {
+                    isLink :false,
+                    ref : sourceInfo.IsDeleted
+                },
+                column4 : {
+                    isLink :true,
+                    ref : 'View Records'
+                },
+                column5 : {
+                    isLink :true,
+                    ref : 'Delete Records'
+                }
+            };
+            
+            // var jDate = gDateTime.getDateFromDOTNet(sourceInfo.TimeRun);
          
-            var hidPID = '<input type="hidden" name="RowId" id="RowId" value ="' + sourceInfo.Id + '"/>';
+            // var hidPID = '<input type="hidden" name="RowId" id="RowId" value ="' + sourceInfo.Id + '"/>';
 
 
-            var arIdx = jQuery.inArray(sourceInfo.Id, this.selection);
+            // var arIdx = jQuery.inArray(sourceInfo.Id, this.selection);
+
+            // if (arIdx >= 0) {
+            //     tableBody += '<tr class = "highLightRow">' + hidPID;
+            // }
+            // else {
+            //     tableBody += '<tr>' + hidPID;
+            // }
+
+            //var _loc = window.location.hash;
+            //_loc = that.qryStrUtils.updateStrForQry(_loc, 'id', sourceInfo.Id);
+
+            // tableBody += '<td><a id= "s' + _idx + '" href="" ><div>' + sourceInfo.Ref + '</div></a></td>';
+            // selectEvents.push({ key: 's' + _idx, value: sourceInfo.Id });
+
+            // tableBody += '<td><div>' + jDate.toUTCString(); + '</div></td>';
+            // tableBody += '<td><div>' + sourceInfo.IsDeleted + '</div></td>';
+            // tableBody += '<td><a href ><div> View Records </div></a></td>';
+            // tableBody += '<td><a href ><div> Delete Records </div></a></td>';
+
+            // tableBody += '</tr>';
+            _idx++;
+            batchContents.push(rowObj);
+        });
+
+
+        var makeColumn = function(idx,id, isLink, ref, evtCollection ){
+            
+            var col = '';
+            
+            if(evtCollection && isLink){
+                col = '<td><a id= "s' + idx + '" href="" ><div>' + ref + '</div></a></td>';
+                evtCollection.push({ key: 's' + idx, value: id });
+                return col;
+            }
+            
+            if(isLink){
+                col = '<td><a href ><div>' + ref + '</div></a></td>';
+            }
+            else
+            {
+                col = '<td><div>' + ref + '</div></td>';
+            }
+            
+            return col;
+        };
+
+        var makeRow = function(rowData){
+            
+            var tableRow = '';
+            
+            var hidPID = '<input type="hidden" name="RowId" id="RowId" value ="' + rowData.id + '"/>';
+
+            var arIdx = jQuery.inArray(rowData.id, this.selection);
 
             if (arIdx >= 0) {
-                tableBody += '<tr class = "highLightRow">' + hidPID;
+                tableRow += '<tr class = "highLightRow">' + hidPID;
             }
             else {
-                tableBody += '<tr>' + hidPID;
+                tableRow += '<tr>' + hidPID;
             }
 
+
             var _loc = window.location.hash;
-            _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', sourceInfo.Id);
+            _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', rowData.id);
 
-            tableBody += '<td><a id= "s' + _idx + '" href="" ><div>' + sourceInfo.Ref + '</div></a></td>';
-            selectEvents.push({ key: 's' + _idx, value: sourceInfo.Id });
+            
+            tableRow += makeColumn(rowData.idx, rowData.id, rowData.column1.isLink, rowData.column1.ref,selectEvents);
+            tableRow += makeColumn(rowData.idx, rowData.id, rowData.column2.isLink, rowData.column2.ref);
+            tableRow += makeColumn(rowData.idx, rowData.id, rowData.column3.isLink, rowData.column3.ref);
+            tableRow += makeColumn(rowData.idx, rowData.id, rowData.column4.isLink, rowData.column4.ref);
+            tableRow += makeColumn(rowData.idx, rowData.id, rowData.column5.isLink, rowData.column5.ref);
+            
+            tableRow += '</tr>';
+        };
 
-            tableBody += '<td><div>' + jDate.toUTCString(); + '</div></td>';
-            tableBody += '<td><div>' + sourceInfo.IsDeleted + '</div></td>';
-            tableBody += '<td><a href ><div> View Records </div></a></td>';
-            tableBody += '<td><a href ><div> Delete Records </div></a></td>';
-
-            tableBody += '</tr>';
+        $.each(batchContents, function (index, value) {
+            tableBody += makeRow(value);  
         });
 
         if (tableBody !== '') {
