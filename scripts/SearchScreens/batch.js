@@ -190,6 +190,8 @@ BatchSearch.prototype = {
             tableRow += makeColumn(rowData.idx, rowData.id, rowData.column5.isLink, rowData.column5.ref);
             
             tableRow += '</tr>';
+            
+            return tableRow;
         };
 
         $.each(batchContents, function (index, value) {
