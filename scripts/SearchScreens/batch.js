@@ -14,10 +14,12 @@ var JSMaster, QryStrUtils, AncUtils,Panels;
 // });
 
 var BatchSearch = function () {
+    this.tableMaker = new TableMaker();
+    
     this.qryStrUtils = new QryStrUtils();
     this.ancUtils = new AncUtils();
-    this.selectorTools = new SelectorTools();
-    this.pager = new Pager();
+   // this.selectorTools = new SelectorTools();
+   // this.pager = new Pager();
     this.DEFAULT_INSERTPERSONS_URL = '/Batches/AddPersons';
     this.DEFAULT_INSERTMARRIAGES_URL = '/Batches/AddMarriages';
     this.DEFAULT_INSERTSOURCES_URL = '/Batches/AddSources';
@@ -75,11 +77,9 @@ BatchSearch.prototype = {
 
     processData: function (data) {
 
-        var tableBody = '';
 
-        var selectEvents = [];
         var _idx = 0;
-        var that = this;
+       // var that = this;
         var gDateTime = new GDateTime();
 
         var batchContents = [];
@@ -140,93 +140,18 @@ BatchSearch.prototype = {
             _idx++;
             batchContents.push(rowObj);
         });
-
-
-        var makeColumn = function(idx,id, isLink, ref, evtCollection ){
-            
-            var col = '';
-            
-            if(evtCollection && isLink){
-                col = '<td><a id= "s' + idx + '" href="" ><div>' + ref + '</div></a></td>';
-                evtCollection.push({ key: 's' + idx, value: id });
-                return col;
-            }
-            
-            if(isLink){
-                col = '<td><a href ><div>' + ref + '</div></a></td>';
-            }
-            else
-            {
-                col = '<td><div>' + ref + '</div></td>';
-            }
-            
-            return col;
+        
+        var pagerparams = { ParentElement: 'pager',
+            Batch: data.Batch,
+            BatchLength: data.BatchLength,
+            Total: data.Total,
+            Function: this.getLink,
+            Context: this
         };
-
-        var makeRow = function(rowData){
-            
-            var tableRow = '';
-            
-            var hidPID = '<input type="hidden" name="RowId" id="RowId" value ="' + rowData.id + '"/>';
-
-            var arIdx = jQuery.inArray(rowData.id, this.selection);
-
-            if (arIdx >= 0) {
-                tableRow += '<tr class = "highLightRow">' + hidPID;
-            }
-            else {
-                tableRow += '<tr>' + hidPID;
-            }
-
-
-            var _loc = window.location.hash;
-            _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', rowData.id);
-
-            
-            tableRow += makeColumn(rowData.idx, rowData.id, rowData.column1.isLink, rowData.column1.ref,selectEvents);
-            tableRow += makeColumn(rowData.idx, rowData.id, rowData.column2.isLink, rowData.column2.ref);
-            tableRow += makeColumn(rowData.idx, rowData.id, rowData.column3.isLink, rowData.column3.ref);
-            tableRow += makeColumn(rowData.idx, rowData.id, rowData.column4.isLink, rowData.column4.ref);
-            tableRow += makeColumn(rowData.idx, rowData.id, rowData.column5.isLink, rowData.column5.ref);
-            
-            tableRow += '</tr>';
-            
-            return tableRow;
-        };
-
-        $.each(batchContents, function (index, value) {
-            tableBody += makeRow(value);  
-        });
-
-        if (tableBody !== '') {
-
-            $('#search_bdy').html(tableBody);
-            //create pager based on results
-
-
-            var pagerparams = { ParentElement: 'pager',
-                Batch: data.Batch,
-                BatchLength: data.BatchLength,
-                Total: data.Total,
-                Function: this.getLink,
-                Context: this
-            };
-
-            this.pager.createpager(pagerparams);
-
-            $('#reccount').html(data.Total + ' Batches');
-        }
-        else {
-
-            $('#search_bdy').html(tableBody);
-            $('#reccount').html('0 Batches');
-        }
-
-        this.selectorTools.addlinks(selectEvents, this.processSelect, this);
+        
+        this.tableMaker.MakeBody(batchContents,pagerparams)
     },
-    processSelect: function (evt) {
-        this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#RowId");
-    },
+
     sort: function (sort_col) {
         this.qryStrUtils.sort_inner(sort_col);
         this.getBatches();
