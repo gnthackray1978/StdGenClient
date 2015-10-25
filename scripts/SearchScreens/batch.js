@@ -99,7 +99,8 @@ BatchSearch.prototype = {
             tableBody += '<td><a id= "s' + _idx + '" href="" ><div>' + sourceInfo.Ref + '</div></a></td>';
             selectEvents.push({ key: 's' + _idx, value: sourceInfo.Id });
 
-            tableBody += '<td><div>' + sourceInfo.Order + '</div></td>';
+            tableBody += '<td><div>' + sourceInfo.TimeRun + '</div></td>';
+            tableBody += '<td><div>' + sourceInfo.IsDeleted + '</div></td>';
             tableBody += '<td><a href ><div> DeleteBatch </div></a></td>';
 
             tableBody += '</tr>';
