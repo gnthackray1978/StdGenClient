@@ -44,18 +44,22 @@ TableMaker.prototype = {
                 case '0':
                     break;
                 case '1':
+                    if(that.tableData.column1Func)
+                        that.tableData.column1Func(evt,idVal);
+                    break;
+                case '2':
                     if(that.tableData.column2Func)
                         that.tableData.column2Func(evt,idVal);
                     break;
-                case '2':
+                case '3':
                     if(that.tableData.column3Func)
                         that.tableData.column3Func(evt,idVal);
                     break;
-                case '3':
+                case '4':
                     if(that.tableData.column4Func)
                         that.tableData.column4Func(evt,idVal);
                     break;
-                case '4':
+                case '5':
                     if(that.tableData.column5Func)
                         that.tableData.column5Func(evt,idVal);
                     break;
