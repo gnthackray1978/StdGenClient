@@ -219,7 +219,7 @@ AncSources.prototype = {
         this.selectorTools.addlinks(selectEvents, this.processSelect, this);
     },
     processSelect: function (evt) {
-        this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#source_id");
+        this.selection = this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#source_id");
     },
     sort: function (sort_col) {
         this.qryStrUtils.sort_inner(sort_col);
