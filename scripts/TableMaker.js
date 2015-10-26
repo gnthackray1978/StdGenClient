@@ -91,11 +91,11 @@ TableMaker.prototype = {
         _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', rowData.id);
 
         
-        tableRow += that.makeColumn(1, rowData.id, rowData.column1.isLink, rowData.column1.ref,undefined,undefined,undefined,selectEvents);
-        tableRow += that.makeColumn(2, rowData.id, rowData.column2.isLink, rowData.column2.ref);
-        tableRow += that.makeColumn(3, rowData.id, rowData.column3.isLink, rowData.column3.ref);
-        tableRow += that.makeColumn(4, rowData.id, rowData.column4.isLink, rowData.column4.ref);
-        tableRow += that.makeColumn(5, rowData.id, rowData.column5.isLink, rowData.column5.ref);
+        tableRow += that.makeColumn(1, rowData.id, rowData.column1.isLink, rowData.column1.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href,selectEvents);
+        tableRow += that.makeColumn(2, rowData.id, rowData.column2.isLink, rowData.column2.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href);
+        tableRow += that.makeColumn(3, rowData.id, rowData.column3.isLink, rowData.column3.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href);
+        tableRow += that.makeColumn(4, rowData.id, rowData.column4.isLink, rowData.column4.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href);
+        tableRow += that.makeColumn(5, rowData.id, rowData.column5.isLink, rowData.column5.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href);
         
         tableRow += '</tr>';
         

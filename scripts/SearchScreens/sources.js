@@ -1,6 +1,7 @@
 var JSMaster, QryStrUtils,AncUtils,Panels,SourceTypeLookup;
 
 var AncSources = function () {
+    this.tableMaker = new TableMaker();
     this.qryStrUtils = new QryStrUtils();
     this.selectorTools = new SelectorTools();
     this.ancUtils = new AncUtils();
@@ -162,9 +163,9 @@ AncSources.prototype = {
     //// returned data.
     processData: function (data) {
         //alert('received something');
-        var tableBody = '';
-        var selectEvents = [];
-        var _idx = 0;
+        // var tableBody = '';
+        // var selectEvents = [];
+        // var _idx = 0;
         var that = this;
 
         var tableData = {
@@ -213,59 +214,63 @@ AncSources.prototype = {
         
         
 
-        $.each(data.serviceSources, function (source, sourceInfo) {
-            //<a href='' class="button" ><span>Main</span></a>
-            var hidfield = '<input type="hidden" name="source_id" id="source_id" value ="' + sourceInfo.SourceId + '"/>';
+        // $.each(data.serviceSources, function (source, sourceInfo) {
+        //     //<a href='' class="button" ><span>Main</span></a>
+        //     var hidfield = '<input type="hidden" name="source_id" id="source_id" value ="' + sourceInfo.SourceId + '"/>';
 
-            tableBody += '<tr>' + hidfield;
-            tableBody += '<td><div>' + sourceInfo.SourceYear + '</div></td>';
-            tableBody += '<td><div>' + sourceInfo.SourceYearTo + '</div></td>';
+        //     tableBody += '<tr>' + hidfield;
+        //     tableBody += '<td><div>' + sourceInfo.SourceYear + '</div></td>';
+        //     tableBody += '<td><div>' + sourceInfo.SourceYearTo + '</div></td>';
 
-            var _loc = window.location.hash;
-            _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', sourceInfo.SourceId);
+        //     var _loc = window.location.hash;
+        //     _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', sourceInfo.SourceId);
 
-            tableBody += '<td><a href="' + that.DEFAULT_SOURCEEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
+        //     tableBody += '<td><a href="' + that.DEFAULT_SOURCEEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
 
-            tableBody += '<td class = "sourceref" ><a  id= "s' + _idx + '" href="" ><div title="' + sourceInfo.SourceRef + '">' + sourceInfo.SourceRef + '</div></a></td>';
+        //     tableBody += '<td class = "sourceref" ><a  id= "s' + _idx + '" href="" ><div title="' + sourceInfo.SourceRef + '">' + sourceInfo.SourceRef + '</div></a></td>';
 
-            selectEvents.push({ key: 's' + _idx, value: sourceInfo.SourceId });
+        //     selectEvents.push({ key: 's' + _idx, value: sourceInfo.SourceId });
 
-            tableBody += '<td class = "source_d" ><div  title="' + sourceInfo.SourceDesc + '">' + sourceInfo.SourceDesc + '</div></td>';
+        //     tableBody += '<td class = "source_d" ><div  title="' + sourceInfo.SourceDesc + '">' + sourceInfo.SourceDesc + '</div></td>';
 
-            tableBody += '</tr>';
-            _idx++;
+        //     tableBody += '</tr>';
+        //     _idx++;
 
-        });
+        // });
 
-        if (tableBody !== '') {
+        // if (tableBody !== '') {
 
-            $('#search_bdy').html(tableBody);
+        //     $('#search_bdy').html(tableBody);
 
-            //create pager based on results
+        //     //create pager based on results
 
-            $('#reccount').html(data.Total + ' Sources');
+        //     $('#reccount').html(data.Total + ' Sources');
             
-            var pagerparams = { ParentElement: 'pager',
-                Batch: data.Batch,
-                BatchLength: data.BatchLength,
-                Total: data.Total,
-                Function: this.getLink,
-                Context: this
-            };
+    
 
-            this.pager.createpager(pagerparams);
-        }
-        else {
-            $('#search_bdy').html(tableBody);
-            $('#reccount').html('0 Sources');
-        }
+        //     this.pager.createpager(pagerparams);
+        // }
+        // else {
+        //     $('#search_bdy').html(tableBody);
+        //     $('#reccount').html('0 Sources');
+        // }
 
 
-        this.selectorTools.addlinks(selectEvents, this.processSelect, this);
+        // this.selectorTools.addlinks(selectEvents, this.processSelect, this);
+        
+        var pagerparams = { ParentElement: 'pager',
+            Batch: data.Batch,
+            BatchLength: data.BatchLength,
+            Total: data.Total,
+            Function: this.getLink,
+            Context: this
+        };
+        
+        this.tableMaker.MakeBody(tableData,pagerparams);
     },
-    processSelect: function (evt) {
-        this.selection = this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#source_id");
-    },
+    // processSelect: function (evt) {
+    //     this.selection = this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#source_id");
+    // },
     sort: function (sort_col) {
         this.qryStrUtils.sort_inner(sort_col);
         this.getSources();
