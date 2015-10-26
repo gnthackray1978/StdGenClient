@@ -37,6 +37,30 @@ TableMaker.prototype = {
         
         $('body').on("click", "." + this.tableId, function(evt){
             console.log('testtesttest');
+            var colIdx = evt.target.parentElement.attributes["data-col"].value;
+            var idVal = evt.target.parentElement.attributes["data-id"].value;
+            
+            switch (colIdx) {
+                case '0':
+                    break;
+                case '1':
+                    if(this.tableData.column2Func)
+                        this.tableData.column2Func(evt,idVal);
+                    break;
+                case '2':
+                    if(this.tableData.column3Func)
+                        this.tableData.column3Func(evt,idVal);
+                    break;
+                case '3':
+                    if(this.tableData.column4Func)
+                        this.tableData.column4Func(evt,idVal);
+                    break;
+                case '4':
+                    if(this.tableData.column5Func)
+                        this.tableData.column5Func(evt,idVal);
+                    break;
+            }
+            
             return false;
         });
         
@@ -85,7 +109,7 @@ TableMaker.prototype = {
         }
         
         if(isLink){
-            col = '<td><a class = "'+ this.tableId +'" data-col="'+ idx +'" href ><div>' + ref + '</div></a></td>';
+            col = '<td><a class = "'+ this.tableId +'" data-col="'+ idx +'" data-id="'+ id +'" href ><div>' + ref + '</div></a></td>';
         }
         else
         {
