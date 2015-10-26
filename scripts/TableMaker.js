@@ -37,6 +37,7 @@ TableMaker.prototype = {
         
         $('body').on("click", "." + this.tableId, function(){
             console.log('testtesttest');
+            return false;
         });
         
     },
