@@ -90,7 +90,7 @@ BatchSearch.prototype = {
             
             var rowObj ={
                 id :value.Id,
-                idx :idx,
+                
                 column1 : {
                     isLink :true,
                     ref : value.Ref
