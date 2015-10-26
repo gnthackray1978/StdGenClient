@@ -139,7 +139,7 @@ TableMaker.prototype = {
     },
         
     processSelect: function (evt) {
-        this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#RowId");
+       this.selection = this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#RowId");
         
         if(this.tableData && this.tableData.column1Func)
             this.tableData.column1Func(evt);
