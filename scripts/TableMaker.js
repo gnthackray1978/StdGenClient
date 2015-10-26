@@ -44,20 +44,20 @@ TableMaker.prototype = {
                 case '0':
                     break;
                 case '1':
-                    if(this.tableData.column2Func)
-                        this.tableData.column2Func(evt,idVal);
+                    if(that.tableData.column2Func)
+                        that.tableData.column2Func(evt,idVal);
                     break;
                 case '2':
-                    if(this.tableData.column3Func)
-                        this.tableData.column3Func(evt,idVal);
+                    if(that.tableData.column3Func)
+                        that.tableData.column3Func(evt,idVal);
                     break;
                 case '3':
-                    if(this.tableData.column4Func)
-                        this.tableData.column4Func(evt,idVal);
+                    if(that.tableData.column4Func)
+                        that.tableData.column4Func(evt,idVal);
                     break;
                 case '4':
-                    if(this.tableData.column5Func)
-                        this.tableData.column5Func(evt,idVal);
+                    if(that.tableData.column5Func)
+                        that.tableData.column5Func(evt,idVal);
                     break;
             }
             
