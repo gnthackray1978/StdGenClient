@@ -179,7 +179,7 @@ AncSources.prototype = {
             
             var rowObj ={
                 id :value.SourceId,
-                
+                idx : idx,
                 column1 : {
                     isLink :false,
                     ref : value.SourceYear

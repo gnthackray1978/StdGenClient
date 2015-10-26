@@ -85,7 +85,7 @@ BatchSearch.prototype = {
             
             var rowObj ={
                 id :value.BatchId,
-                
+                idx : idx,
                 column1 : {
                     key :true,
                     isLink :true,
