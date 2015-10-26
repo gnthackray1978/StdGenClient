@@ -4,6 +4,7 @@ var TableMaker = function() {
     this.qryStrUtils = new QryStrUtils();
     this.tableData;
     this.selection = [];
+    this.tableId = 't1';
 }
 
 TableMaker.prototype = {
@@ -33,6 +34,10 @@ TableMaker.prototype = {
         }
 
         this.selectorTools.addlinks(selectEvents, this.processSelect, this);
+        
+        $('body').on("click", "." + this.tableId, function(){
+            console.log('testtesttest');
+        });
         
     },
     
@@ -79,7 +84,7 @@ TableMaker.prototype = {
         }
         
         if(isLink){
-            col = '<td><a href ><div>' + ref + '</div></a></td>';
+            col = '<td><a class = "'+ this.tableId +'" data-col="'+ idx +'" href ><div>' + ref + '</div></a></td>';
         }
         else
         {
