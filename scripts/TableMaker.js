@@ -4,6 +4,7 @@ var TableMaker = function() {
     this.qryStrUtils = new QryStrUtils();
     this.tableData;
     this.selection = [];
+    this.tpSelection ;
     this.tableId = 't1';
 }
 
@@ -13,12 +14,12 @@ TableMaker.prototype = {
         this.tableData = tableData;
         
         var tableBody = '';
-        var selectEvents = [];
+        this.tpSelection = [];
     
         var that = this;
 
         $.each(tableData.rows, function (index, value) {
-            tableBody += that.makeRow(value, selectEvents);  
+            tableBody += that.makeRow(value);  
         });
 
         if (tableBody !== '') {
@@ -33,7 +34,7 @@ TableMaker.prototype = {
             that.UpdateRecordCount('0');
         }
 
-        this.selectorTools.addlinks(selectEvents, this.processSelect, this);
+        this.selectorTools.addlinks(this.tpSelection, this.processSelect, this);
         
         $('body').on("click", "." + this.tableId, function(evt){
             console.log('testtesttest');
@@ -70,7 +71,7 @@ TableMaker.prototype = {
         
     },
     
-    makeRow : function(rowData, selectEvents){
+    makeRow : function(rowData){
         
         var that = this;
         var tableRow = '';
@@ -91,25 +92,25 @@ TableMaker.prototype = {
         _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', rowData.id);
 
         
-        tableRow += that.makeColumn(1, rowData.id, rowData.column1.isLink, rowData.column1.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href,selectEvents);
-        tableRow += that.makeColumn(2, rowData.id, rowData.column2.isLink, rowData.column2.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href);
-        tableRow += that.makeColumn(3, rowData.id, rowData.column3.isLink, rowData.column3.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href);
-        tableRow += that.makeColumn(4, rowData.id, rowData.column4.isLink, rowData.column4.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href);
-        tableRow += that.makeColumn(5, rowData.id, rowData.column5.isLink, rowData.column5.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href);
+        tableRow += that.makeColumn(1, rowData.id, rowData.column1.isLink, rowData.column1.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href,rowData.column1.key);
+        tableRow += that.makeColumn(2, rowData.id, rowData.column2.isLink, rowData.column2.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href,rowData.column1.key);
+        tableRow += that.makeColumn(3, rowData.id, rowData.column3.isLink, rowData.column3.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href,rowData.column1.key);
+        tableRow += that.makeColumn(4, rowData.id, rowData.column4.isLink, rowData.column4.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href,rowData.column1.key);
+        tableRow += that.makeColumn(5, rowData.id, rowData.column5.isLink, rowData.column5.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href,rowData.column1.key);
         
         tableRow += '</tr>';
         
         return tableRow;
     },
     
-    makeColumn : function(idx,id, isLink, ref,classArg,titleArg,hrefArg, evtCollection ){
+    makeColumn : function(idx,id, isLink, ref,classArg,titleArg,hrefArg, keyArg ){
             
         var col = '';
-        
-        if(evtCollection && isLink){
+        //this.tpSelection
+        if(keyArg && isLink){
             col = '<td><a id= "s' + idx + '" href="" ><div>' + ref + '</div></a></td>';
             if(id == undefined) console.log('id not set');
-            evtCollection.push({ key: 's' + idx, value: id });
+            this.tpSelection.push({ key: 's' + idx, value: id });
             return col;
         }
         var classParam ='';

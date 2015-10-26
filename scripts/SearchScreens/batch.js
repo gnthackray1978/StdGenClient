@@ -87,6 +87,7 @@ BatchSearch.prototype = {
                 id :value.BatchId,
                 
                 column1 : {
+                    key :true,
                     isLink :true,
                     ref : value.Ref
                 },

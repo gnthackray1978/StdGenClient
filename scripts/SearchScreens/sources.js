@@ -195,6 +195,7 @@ AncSources.prototype = {
                 },
                 column4 : {
                     isLink :true,
+                    key :true,
                     title : value.SourceRef,
                     ref : value.SourceRef,
                     className : 'sourceref'
