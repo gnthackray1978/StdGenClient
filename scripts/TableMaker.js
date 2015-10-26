@@ -35,7 +35,7 @@ TableMaker.prototype = {
 
         this.selectorTools.addlinks(selectEvents, this.processSelect, this);
         
-        $('body').on("click", "." + this.tableId, function(){
+        $('body').on("click", "." + this.tableId, function(evt){
             console.log('testtesttest');
             return false;
         });
