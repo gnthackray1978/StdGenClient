@@ -126,10 +126,10 @@ TableMaker.prototype = {
     processSelect: function (evt) {
         this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#RowId");
         
-        if(this.tableData && this.tableData.column1Func)
-            this.tableData.column1Func(evt);
+        // if(this.tableData && this.tableData.column1Func)
+        //     this.tableData.column1Func(evt);
             
-        console.log(evt);
+        // console.log(evt);
     },
     UpdateRecordCount: function (count){
         $('#reccount').html(count + ' Batches');
