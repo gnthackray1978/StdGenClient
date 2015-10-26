@@ -167,6 +167,51 @@ AncSources.prototype = {
         var _idx = 0;
         var that = this;
 
+        var tableData = {
+            column1Func : function(){console.log('hello1');},
+            column4Func : function(){console.log('hello4');},
+            column5Func : function(){console.log('hello5');},
+            rows : []
+        }; 
+
+        $.each(data.serviceSources, function (idx, value) {
+            
+            var rowObj ={
+                id :value.SourceId,
+                
+                column1 : {
+                    isLink :false,
+                    ref : value.SourceYear
+                },
+                column2 : {
+                    isLink :false,
+                    ref : value.SourceYearTo
+                },
+                column3 : {
+                    isLink :true,
+                    href : that.DEFAULT_SOURCEEDITOR_URL,
+                    ref : 'Edit'
+                },
+                column4 : {
+                    isLink :true,
+                    title : value.SourceRef,
+                    ref : value.SourceRef,
+                    className : 'sourceref'
+                },
+                column5 : {
+                    isLink :false,
+                    title : value.SourceDesc,
+                    ref : value.SourceDesc,
+                    className : 'source_d'
+                }
+            };
+            
+            tableData.rows.push(rowObj);
+        });
+        
+        
+        
+        
 
         $.each(data.serviceSources, function (source, sourceInfo) {
             //<a href='' class="button" ><span>Main</span></a>

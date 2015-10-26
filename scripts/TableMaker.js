@@ -91,7 +91,7 @@ TableMaker.prototype = {
         _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', rowData.id);
 
         
-        tableRow += that.makeColumn(1, rowData.id, rowData.column1.isLink, rowData.column1.ref,selectEvents);
+        tableRow += that.makeColumn(1, rowData.id, rowData.column1.isLink, rowData.column1.ref,undefined,undefined,undefined,selectEvents);
         tableRow += that.makeColumn(2, rowData.id, rowData.column2.isLink, rowData.column2.ref);
         tableRow += that.makeColumn(3, rowData.id, rowData.column3.isLink, rowData.column3.ref);
         tableRow += that.makeColumn(4, rowData.id, rowData.column4.isLink, rowData.column4.ref);
@@ -102,7 +102,7 @@ TableMaker.prototype = {
         return tableRow;
     },
     
-    makeColumn : function(idx,id, isLink, ref, evtCollection ){
+    makeColumn : function(idx,id, isLink, ref,classArg,titleArg,hrefArg, evtCollection ){
             
         var col = '';
         
@@ -112,13 +112,27 @@ TableMaker.prototype = {
             evtCollection.push({ key: 's' + idx, value: id });
             return col;
         }
+        var classParam ='';
         
+        var titleParam ='';
+        
+        var hrefParam =' href ';
+        
+        if(titleArg)
+            titleParam =' title = "'+ titleArg + '" ';
+        
+        if(classArg)
+            classParam =' class = "'+ classArg + '" ';  
+            
+        if(hrefArg)            
+            hrefParam =' href = "' + hrefArg + '" ';
+            
         if(isLink){
-            col = '<td><a class = "'+ this.tableId +'" data-col="'+ idx +'" data-id="'+ id +'" href ><div>' + ref + '</div></a></td>';
+            col = '<td ' + classParam +' ><a class = "'+ this.tableId +'" data-col="'+ idx +'" data-id="'+ id +'" ' + hrefParam +' ><div ' + titleParam + ' >' + ref + '</div></a></td>';
         }
         else
         {
-            col = '<td><div>' + ref + '</div></td>';
+            col = '<td ' + classParam +' ><div ' + titleParam + ' >' + ref + '</div></td>';
         }
         
         return col;
