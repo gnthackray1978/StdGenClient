@@ -69,7 +69,7 @@ SourceTypeLookup.prototype = {
    
         var stds = this.qryStrUtils.getParameterByName('stids', '');
    
-        var stypeSelection = this.selectorTools.handleSelection(String(stypeIds), stds.split(','), '#sourcetype_lookup_body tr', "input");
+        var stypeSelection = this.selectorTools.handleSelection(stypeIds, stds.split(','), '#sourcetype_lookup_body tr', "input");
 
         if (stypeSelection != undefined) {
 

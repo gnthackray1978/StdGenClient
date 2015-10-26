@@ -4,15 +4,6 @@ MANOWAR SLEIPNIR
 
 var JSMaster, QryStrUtils, AncUtils,Panels;
 
-// $(document).ready(function () {
-//     var jsMaster = new JSMaster();
-
-//     jsMaster.generateHeader('#1', function () {
-//         var ancSourceTypes = new AncSourceTypes();
-//         ancSourceTypes.init();
-//     });
-// });
-
 var BatchSearch = function () {
     this.tableMaker = new TableMaker();
     
@@ -147,22 +138,22 @@ BatchSearch.prototype = {
     },
     ImportPersons: function () {
         this.postParams.url = this.DEFAULT_INSERTPERSONS_URL;
-        this.postParams.data = { sheetUrl: this.qryStrUtils.convertToCSV(this.selection) };
+        this.postParams.data = { sheetUrl: this.DEFAULT_PERSONSHEET_URL };
         this.ancUtils.twaPostJSON(this.postParams);
     },
     ImportMarriages: function () {
         this.postParams.url = this.DEFAULT_INSERTMARRIAGES_URL;
-        this.postParams.data = { sheetUrl: this.qryStrUtils.convertToCSV(this.selection) };
+        this.postParams.data = { sheetUrl: this.DEFAULT_MARRIAGESHEET_URL};
         this.ancUtils.twaPostJSON(this.postParams);
     },
     ImportParishs: function () {
         this.postParams.url = this.DEFAULT_INSERTPARISHS_URL;
-        this.postParams.data = { sheetUrl: this.qryStrUtils.convertToCSV(this.selection) };
+        this.postParams.data = { sheetUrl: this.DEFAULT_PARISHSHEET_URL};
         this.ancUtils.twaPostJSON(this.postParams);
     },
     ImportSources: function () {
         this.postParams.url = this.DEFAULT_INSERTSOURCES_URL;
-        this.postParams.data = { sheetUrl: this.qryStrUtils.convertToCSV(this.selection) };
+        this.postParams.data = { sheetUrl: this.DEFAULT_SOURCESHEET_URL};
         this.ancUtils.twaPostJSON(this.postParams);
     }
 
