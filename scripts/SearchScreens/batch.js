@@ -93,7 +93,7 @@ BatchSearch.prototype = {
         $.each(data.Batches, function (idx, value) {
             
             var rowObj ={
-                id :value.Id,
+                id :value.BatchId,
                 
                 column1 : {
                     isLink :true,

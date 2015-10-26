@@ -35,38 +35,38 @@ TableMaker.prototype = {
 
         this.selectorTools.addlinks(selectEvents, this.processSelect, this);
         
-        // $('body').on("click", "." + this.tableId, function(evt){
-        //     console.log('testtesttest');
-        //     var colIdx = evt.target.parentElement.attributes["data-col"].value;
-        //     var idVal = evt.target.parentElement.attributes["data-id"].value;
+        $('body').on("click", "." + this.tableId, function(evt){
+            console.log('testtesttest');
+            var colIdx = evt.target.parentElement.attributes["data-col"].value;
+            var idVal = evt.target.parentElement.attributes["data-id"].value;
             
-        //     switch (colIdx) {
-        //         case '0':
-        //             break;
-        //         case '1':
-        //             if(that.tableData.column1Func)
-        //                 that.tableData.column1Func(evt,idVal);
-        //             break;
-        //         case '2':
-        //             if(that.tableData.column2Func)
-        //                 that.tableData.column2Func(evt,idVal);
-        //             break;
-        //         case '3':
-        //             if(that.tableData.column3Func)
-        //                 that.tableData.column3Func(evt,idVal);
-        //             break;
-        //         case '4':
-        //             if(that.tableData.column4Func)
-        //                 that.tableData.column4Func(evt,idVal);
-        //             break;
-        //         case '5':
-        //             if(that.tableData.column5Func)
-        //                 that.tableData.column5Func(evt,idVal);
-        //             break;
-        //     }
+            switch (colIdx) {
+                case '0':
+                    break;
+                case '1':
+                    if(that.tableData.column1Func)
+                        that.tableData.column1Func(evt,idVal);
+                    break;
+                case '2':
+                    if(that.tableData.column2Func)
+                        that.tableData.column2Func(evt,idVal);
+                    break;
+                case '3':
+                    if(that.tableData.column3Func)
+                        that.tableData.column3Func(evt,idVal);
+                    break;
+                case '4':
+                    if(that.tableData.column4Func)
+                        that.tableData.column4Func(evt,idVal);
+                    break;
+                case '5':
+                    if(that.tableData.column5Func)
+                        that.tableData.column5Func(evt,idVal);
+                    break;
+            }
             
-        //     return false;
-        // });
+            return false;
+        });
         
     },
     
@@ -108,6 +108,7 @@ TableMaker.prototype = {
         
         if(evtCollection && isLink){
             col = '<td><a id= "s' + idx + '" href="" ><div>' + ref + '</div></a></td>';
+            if(id == undefined) console.log('id not set');
             evtCollection.push({ key: 's' + idx, value: id });
             return col;
         }
@@ -126,10 +127,10 @@ TableMaker.prototype = {
     processSelect: function (evt) {
         this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#RowId");
         
-        // if(this.tableData && this.tableData.column1Func)
-        //     this.tableData.column1Func(evt);
+        if(this.tableData && this.tableData.column1Func)
+            this.tableData.column1Func(evt);
             
-        // console.log(evt);
+        console.log(evt);
     },
     UpdateRecordCount: function (count){
         $('#reccount').html(count + ' Batches');
