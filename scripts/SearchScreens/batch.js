@@ -18,14 +18,18 @@ var BatchSearch = function () {
     
     this.qryStrUtils = new QryStrUtils();
     this.ancUtils = new AncUtils();
-   // this.selectorTools = new SelectorTools();
-   // this.pager = new Pager();
+ 
     this.DEFAULT_INSERTPERSONS_URL = '/Batches/AddPersons';
     this.DEFAULT_INSERTMARRIAGES_URL = '/Batches/AddMarriages';
     this.DEFAULT_INSERTSOURCES_URL = '/Batches/AddSources';
     this.DEFAULT_INSERTPARISHS_URL = '/Batches/AddParishs';
     this.DEFAULT_REMOVEBATCH_URL = '/Batches/RemoveBatch';
     this.DEFAULT_BATCHSELECT_URL = '/Batches/GetBatches';
+    
+    this.DEFAULT_PERSONSHEET_URL = 'https://docs.google.com/spreadsheets/d/1nmAHAtyTSeqVNZ0oV0pW1gRSIiuok61ejEsOcy3rZvs/pub?output=csv';
+    this.DEFAULT_MARRIAGESHEET_URL = 'https://docs.google.com/spreadsheets/d/1nmAHAtyTSeqVNZ0oV0pW1gRSIiuok61ejEsOcy3rZvs/pub?output=csv';
+    this.DEFAULT_SOURCESHEET_URL = 'https://docs.google.com/spreadsheets/d/1nmAHAtyTSeqVNZ0oV0pW1gRSIiuok61ejEsOcy3rZvs/pub?output=csv';
+    this.DEFAULT_PARISHSHEET_URL = 'https://docs.google.com/spreadsheets/d/1nmAHAtyTSeqVNZ0oV0pW1gRSIiuok61ejEsOcy3rZvs/pub?output=csv';
      
     this.selection = [];
   
@@ -86,7 +90,7 @@ BatchSearch.prototype = {
             rows : []
         }; 
 
-        $.each(data.batchContents, function (idx, value) {
+        $.each(data.Batches, function (idx, value) {
             
             var rowObj ={
                 id :value.Id,
