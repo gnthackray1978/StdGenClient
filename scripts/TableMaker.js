@@ -93,10 +93,10 @@ TableMaker.prototype = {
 
         
         tableRow += that.makeColumn(1, rowData.id, rowData.column1.isLink, rowData.column1.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href,rowData.column1.key);
-        tableRow += that.makeColumn(2, rowData.id, rowData.column2.isLink, rowData.column2.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href,rowData.column1.key);
-        tableRow += that.makeColumn(3, rowData.id, rowData.column3.isLink, rowData.column3.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href,rowData.column1.key);
-        tableRow += that.makeColumn(4, rowData.id, rowData.column4.isLink, rowData.column4.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href,rowData.column1.key);
-        tableRow += that.makeColumn(5, rowData.id, rowData.column5.isLink, rowData.column5.ref,rowData.column1.className,rowData.column1.title,rowData.column1.href,rowData.column1.key);
+        tableRow += that.makeColumn(2, rowData.id, rowData.column2.isLink, rowData.column2.ref,rowData.column2.className,rowData.column2.title,rowData.column2.href,rowData.column2.key);
+        tableRow += that.makeColumn(3, rowData.id, rowData.column3.isLink, rowData.column3.ref,rowData.column3.className,rowData.column3.title,rowData.column3.href,rowData.column3.key);
+        tableRow += that.makeColumn(4, rowData.id, rowData.column4.isLink, rowData.column4.ref,rowData.column4.className,rowData.column4.title,rowData.column4.href,rowData.column4.key);
+        tableRow += that.makeColumn(5, rowData.id, rowData.column5.isLink, rowData.column5.ref,rowData.column5.className,rowData.column5.title,rowData.column5.href,rowData.column5.key);
         
         tableRow += '</tr>';
         
