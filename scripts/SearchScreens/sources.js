@@ -195,6 +195,9 @@ AncSources.prototype = {
         }; 
 
         $.each(data.serviceSources, function (idx, value) {
+            var _loc = window.location.hash;
+            _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', value.SourceId);
+            
             
             var rowObj ={
                 id :value.SourceId,
@@ -209,7 +212,7 @@ AncSources.prototype = {
                 },
                 column3 : {
                     isLink :true,
-                    href : that.DEFAULT_SOURCEEDITOR_URL,
+                    href : that.DEFAULT_SOURCEEDITOR_URL+_loc,
                     ref : 'Edit'
                 },
                 column4 : {
