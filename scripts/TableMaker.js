@@ -40,6 +40,9 @@ TableMaker.prototype = {
             console.log('testtesttest');
             var colIdx = evt.target.parentElement.attributes["data-col"].value;
             var idVal = evt.target.parentElement.attributes["data-id"].value;
+            var href = evt.target.parentElement.attributes["href"].value;
+            
+            href = href === undefined ? '' : href;
             
             switch (colIdx) {
                 case '0':
@@ -66,7 +69,11 @@ TableMaker.prototype = {
                     break;
             }
             
-            return false;
+            if(href.indexOf("htm") > -1)
+                return true;
+            else
+                return false;
+            
         });
         
     },
