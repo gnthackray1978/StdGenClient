@@ -343,7 +343,7 @@ GeneralMap.prototype = {
                                 this.infoWindows[idx - 1].isopen = 0;
                             }, this)
                         );
-                panels.masterShowTab(1);
+                panels.masterShowTab(3);
             }
             , this));
             //this.ancUtils.twaGetJSON('/ParishService/GetParishDetails', params, fresult);
