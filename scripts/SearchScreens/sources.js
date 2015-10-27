@@ -148,7 +148,7 @@ AncSources.prototype = {
     openPersons:function(){
         var parishLst = '';
 
-        $.each(this.selection, function (idx, val) {
+        $.each(this.tableMaker.selection, function (idx, val) {
             if (idx > 0) {
                 parishLst += ',' + val;
             }
