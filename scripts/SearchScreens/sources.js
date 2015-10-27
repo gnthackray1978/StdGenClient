@@ -3,9 +3,9 @@ var JSMaster, QryStrUtils,AncUtils,Panels,SourceTypeLookup;
 var AncSources = function () {
     this.tableMaker = new TableMaker();
     this.qryStrUtils = new QryStrUtils();
-    this.selectorTools = new SelectorTools();
+    
     this.ancUtils = new AncUtils();
-    this.pager = new Pager();
+  
     this.DEFAULT_SOURCESELECT_URL = '/Sources/Select';
     this.DEFAULT_SOURCEDELETE_URL = '/Sources/Delete';
     this.DEFAULT_BATCHENTRY_URL = '../HtmlPages/batchEntry.html';
@@ -159,13 +159,8 @@ AncSources.prototype = {
 
     },
 
-    //// this can find out what page its on based on the
-    //// returned data.
     processData: function (data) {
-        //alert('received something');
-        // var tableBody = '';
-        // var selectEvents = [];
-        // var _idx = 0;
+      
         var that = this;
 
         var tableData = {
@@ -210,55 +205,7 @@ AncSources.prototype = {
             
             tableData.rows.push(rowObj);
         });
-        
-        
-        
-        
 
-        // $.each(data.serviceSources, function (source, sourceInfo) {
-        //     //<a href='' class="button" ><span>Main</span></a>
-        //     var hidfield = '<input type="hidden" name="source_id" id="source_id" value ="' + sourceInfo.SourceId + '"/>';
-
-        //     tableBody += '<tr>' + hidfield;
-        //     tableBody += '<td><div>' + sourceInfo.SourceYear + '</div></td>';
-        //     tableBody += '<td><div>' + sourceInfo.SourceYearTo + '</div></td>';
-
-        //     var _loc = window.location.hash;
-        //     _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', sourceInfo.SourceId);
-
-        //     tableBody += '<td><a href="' + that.DEFAULT_SOURCEEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
-
-        //     tableBody += '<td class = "sourceref" ><a  id= "s' + _idx + '" href="" ><div title="' + sourceInfo.SourceRef + '">' + sourceInfo.SourceRef + '</div></a></td>';
-
-        //     selectEvents.push({ key: 's' + _idx, value: sourceInfo.SourceId });
-
-        //     tableBody += '<td class = "source_d" ><div  title="' + sourceInfo.SourceDesc + '">' + sourceInfo.SourceDesc + '</div></td>';
-
-        //     tableBody += '</tr>';
-        //     _idx++;
-
-        // });
-
-        // if (tableBody !== '') {
-
-        //     $('#search_bdy').html(tableBody);
-
-        //     //create pager based on results
-
-        //     $('#reccount').html(data.Total + ' Sources');
-            
-    
-
-        //     this.pager.createpager(pagerparams);
-        // }
-        // else {
-        //     $('#search_bdy').html(tableBody);
-        //     $('#reccount').html('0 Sources');
-        // }
-
-
-        // this.selectorTools.addlinks(selectEvents, this.processSelect, this);
-        
         var pagerparams = { ParentElement: 'pager',
             Batch: data.Batch,
             BatchLength: data.BatchLength,
@@ -269,9 +216,6 @@ AncSources.prototype = {
         
         this.tableMaker.MakeBody(tableData,pagerparams);
     },
-    // processSelect: function (evt) {
-    //     this.selection = this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#source_id");
-    // },
     sort: function (sort_col) {
         this.qryStrUtils.sort_inner(sort_col);
         this.getSources();
