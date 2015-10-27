@@ -146,7 +146,18 @@ AncSources.prototype = {
     },
 
     openPersons:function(){
-        var redirectWindow = window.open(this.DEFAULT_PERSONSEARCH_URL + '?test=1', '_blank');
+        var parishLst = '';
+
+        $.each(this.selection, function (idx, val) {
+            if (idx > 0) {
+                parishLst += ',' + val;
+            }
+            else {
+                parishLst += val;
+            }
+        });
+        
+        var redirectWindow = window.open(this.DEFAULT_PERSONSEARCH_URL + '?#scs='+ parishLst, '_blank');
         redirectWindow.location;
     },
     
