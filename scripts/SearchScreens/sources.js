@@ -157,7 +157,7 @@ AncSources.prototype = {
             }
         });
         
-        var redirectWindow = window.open(this.DEFAULT_PERSONSEARCH_URL + '?#active=1&scs='+ parishLst +'_blank');
+        var redirectWindow = window.open(this.DEFAULT_PERSONSEARCH_URL + '?#active=1&sids='+ parishLst +'_blank');
         redirectWindow.location;
     },
     
