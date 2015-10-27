@@ -43,8 +43,8 @@ AncSources.prototype = {
 
 
         $("body").on("click", "#add", $.proxy(function () { this.addSource('00000000-0000-0000-0000-000000000000'); return false; }, this));
-        $("body").on("click", "#viewmarriages", $.proxy(function () { this.addSource('00000000-0000-0000-0000-000000000000'); return false; }, this));
-        $("body").on("click", "#viewpersons", $.proxy(function () { this.addSource('00000000-0000-0000-0000-000000000000'); return false; }, this));
+        $("body").on("click", "#viewmarriages", $.proxy(function () { this.openMarriages(); return false; }, this));
+        $("body").on("click", "#viewpersons", $.proxy(function () { this.openPersons(); return false; }, this));
         
         $("body").on("click", "#delete", $.proxy(function () { this.deleteSources(); return false; }, this));
         $("body").on("click", "#print", $.proxy(function () { this.printableSources(); return false; }, this));
