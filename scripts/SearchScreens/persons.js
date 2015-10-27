@@ -21,6 +21,7 @@ var AncPersons = function () {
 
     this.selection = [];
     this.parishId = '';
+    this.sourceIds = '';
 
     this.postParams = {
         url: '',
@@ -119,6 +120,7 @@ AncPersons.prototype = {
             
 
             this.parishId = this.qryStrUtils.getParameterByName('parid', '');
+            this.sourceIds = this.qryStrUtils.getParameterByName('sids', '');
             console.log('person calling get data');
             this.getPersons('1');
         }
@@ -150,7 +152,8 @@ AncPersons.prototype = {
             "incb": $('#chkIncludeBirths').prop('checked'),
             "incd": $('#chkIncludeDeaths').prop('checked'),
             "incs": $('#chkIncludeSources').prop('checked'),
-            "parid": this.parishId
+            "parid": this.parishId,
+            "sids":this.sourceIds
         };
 
 
@@ -187,7 +190,7 @@ AncPersons.prototype = {
         params[12] = String($('#chkIncludeBirths').prop('checked'));
         params[13] = String($('#chkIncludeDeaths').prop('checked'));
         params[14] = String($('#chkIncludeSources').prop('checked'));
-        params[15] = String(this.qryStrUtils.getParameterByName('sids', ''));
+        params[15] = this.sourceIds;
         params[16] = String($('#txtSpouse').val());
         params[17] = this.parishId;
         params[18] = String(this.qryStrUtils.getParameterByName('page', 0));
