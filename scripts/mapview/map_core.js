@@ -282,19 +282,19 @@ GeneralMap.prototype = {
                 headersection += '<a id = "' + parishId + 'sou" href="" ><span>Sources</span></a>';
                 headersection += '</div>';
 
-                headersection += '<div id="panelA" class = "displayPanel">';
+                headersection += '<div id="panelA'+ parishId+'" class = "displayPanel">';
                 headersection += '<div class = "mtrlnk">';
                 headersection += this.mapParishs.generateTranscripts(result.serviceParishTranscripts);
                 headersection += '</div>';
                 headersection += '</div>';
 
-                headersection += '<div id="panelB" class = "hidePanel">';
+                headersection += '<div id="panelB'+ parishId+'" class = "hidePanel">';
                 headersection += '<div class = "mtrlnk">';
                 headersection += this.mapParishs.generateRegisters(result.serviceParishRecords);
                 headersection += '</div>';
                 headersection += '</div>';
 
-                headersection += '<div id="panelC" class = "hidePanel">';
+                headersection += '<div id="panelC'+ parishId+'" class = "hidePanel">';
                 headersection += '<div class = "mtrlnk">';
                 headersection += this.mapSources.generateSources(result.serviceServiceMapDisplaySource, parishId, parishName, result.MarriageCount, result.PersonCount);
                 headersection += '</div>';
@@ -304,19 +304,25 @@ GeneralMap.prototype = {
                 var panels = new Panels();
 
                 $('body').on("click", '#' + parishId + 'tra', $.proxy(function () { 
-                    panels.masterShowTab(1); 
+                    $('#panelA'+ parishId).removeClass("displayPanel").addClass("hidePanel");
+                    $("#panelB"+ parishId).removeClass("displayPanel").addClass("hidePanel");
+                    $("#panelC"+ parishId).removeClass("hidePanel").addClass("displayPanel");
                     return false; 
                     
                 }, panels));
                 
                 $('body').on("click", '#' + parishId + 'reg', $.proxy(function () { 
-                    panels.masterShowTab(2); 
+                    $("#panelA"+ parishId).removeClass("displayPanel").addClass("hidePanel");
+                    $("#panelB"+ parishId).removeClass("hidePanel").addClass("displayPanel");
+                    $("#panelC"+ parishId).removeClass("displayPanel").addClass("hidePanel");
                     return false; 
                     
                 }, panels));
                 
                 $('body').on("click", '#' + parishId + 'sou', $.proxy(function () { 
-                    panels.masterShowTab(3); 
+                    $("#panelA"+ parishId).removeClass("hidePanel").addClass("displayPanel");
+                    $("#panelB"+ parishId).removeClass("displayPanel").addClass("hidePanel");
+                    $("#panelC"+ parishId).removeClass("displayPanel").addClass("hidePanel"); 
                     return false; 
                     
                 }, panels));
@@ -343,7 +349,7 @@ GeneralMap.prototype = {
                                 this.infoWindows[idx - 1].isopen = 0;
                             }, this)
                         );
-                panels.masterShowTab(3);
+                panels.masterShowTab(1);
             }
             , this));
             //this.ancUtils.twaGetJSON('/ParishService/GetParishDetails', params, fresult);
