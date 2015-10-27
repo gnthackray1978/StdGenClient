@@ -303,9 +303,23 @@ GeneralMap.prototype = {
 
                 var panels = new Panels();
 
-                $('body').on("click", '#' + parishId + 'tra', $.proxy(function () { panels.masterShowTab(1); return false; }, panels));
-                $('body').on("click", '#' + parishId + 'reg', $.proxy(function () { panels.masterShowTab(2); return false; }, panels));
-                $('body').on("click", '#' + parishId + 'sou', $.proxy(function () { panels.masterShowTab(3); return false; }, panels));
+                $('body').on("click", '#' + parishId + 'tra', $.proxy(function () { 
+                    panels.masterShowTab(1); 
+                    return false; 
+                    
+                }, panels));
+                
+                $('body').on("click", '#' + parishId + 'reg', $.proxy(function () { 
+                    panels.masterShowTab(2); 
+                    return false; 
+                    
+                }, panels));
+                
+                $('body').on("click", '#' + parishId + 'sou', $.proxy(function () { 
+                    panels.masterShowTab(3); 
+                    return false; 
+                    
+                }, panels));
 
 
                 var infowindow = new google.maps.InfoWindow({
