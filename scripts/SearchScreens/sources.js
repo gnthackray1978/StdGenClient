@@ -79,7 +79,7 @@ AncSources.prototype = {
 
         var isPersonImpSelection = this.qryStrUtils.getParameterByName('scs', '');
 
-        if (isPersonImpSelection !== null) {
+        if (isPersonImpSelection !== '') {
             $("#rLink").removeClass("hidePanel").addClass("displayPanel");
         }
         else {
