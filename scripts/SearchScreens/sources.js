@@ -121,16 +121,7 @@ AncSources.prototype = {
 
     returnselection: function () {
 
-        var parishLst = '';
-
-        $.each(this.selection, function (idx, val) {
-            if (idx > 0) {
-                parishLst += ',' + val;
-            }
-            else {
-                parishLst += val;
-            }
-        });
+        var parishLst = this.makeSourceList();
 
         this.qryStrUtils.updateQryPar('scs', parishLst);
 
@@ -146,6 +137,14 @@ AncSources.prototype = {
     },
 
     openPersons:function(){
+        
+        var parishLst = this.makeSourceList();
+        
+        var redirectWindow = window.open(this.DEFAULT_PERSONSEARCH_URL + '?#active=1&sids='+ parishLst +'');
+ 
+    },
+    
+    makeSourceList: function(){
         var parishLst = '';
 
         $.each(this.tableMaker.selection, function (idx, val) {
@@ -157,12 +156,13 @@ AncSources.prototype = {
             }
         });
         
-        var redirectWindow = window.open(this.DEFAULT_PERSONSEARCH_URL + '?#active=1&sids='+ parishLst +'');
-        redirectWindow.location;
+        return parishLst;
     },
-    
     openMarriages:function(){
         
+        var parishLst = this.makeSourceList();
+        
+        var redirectWindow = window.open(this.DEFAULT_MARRIAGESEARCH_URL + '?#active=1&sids='+ parishLst +'');
     },
 
     createQryString: function () {

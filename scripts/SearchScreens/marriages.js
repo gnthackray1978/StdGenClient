@@ -20,6 +20,7 @@ var AncMarriages = function () {
 
     this.selection = [];
     this.parishId = '';
+    this.sourceIds = '';
     this.postParams = { 
         url: '',
         data: '',
@@ -77,7 +78,8 @@ AncMarriages.prototype = {
             $('#txtLowerDateRangeUpper').val(this.qryStrUtils.getParameterByName('ldru', ''));
 
             this.parishId = this.qryStrUtils.getParameterByName('parid', '');
-
+            this.sourceIds = this.qryStrUtils.getParameterByName('sids', '');
+            
             this.getMarriages('1');
 
             
@@ -98,7 +100,8 @@ AncMarriages.prototype = {
             "ldrl": $('#txtLowerDateRangeLower'),
             "ldru": $('#txtLowerDateRangeUpper'),
             "wit": $('#txtWitnessName'),
-            "parid": this.parishId
+            "parid": this.parishId,
+            "sids": this.sourceIds
         };
 
 
@@ -125,8 +128,8 @@ AncMarriages.prototype = {
         params[5] = String($('#txtLocation').val());
         params[6] = String($('#txtLowerDateRangeLower').val());
         params[7] = String($('#txtLowerDateRangeUpper').val());
-        params[8] = '';
-        params[9] = this.qryStrUtils.getParameterByName('parid', '');
+        params[8] = this.sourceIds;
+        params[9] = this.parishId;
         params[10] = String($('#txtWitnessName').val());
         params[11] = String(this.qryStrUtils.getParameterByName('page', 0));
         params[12] = '30';
