@@ -10,6 +10,8 @@ var AncSources = function () {
     this.DEFAULT_SOURCEDELETE_URL = '/Sources/Delete';
     this.DEFAULT_BATCHENTRY_URL = '../HtmlPages/batchEntry.html';
     this.DEFAULT_SOURCEEDITOR_URL = '../HtmlPages/SourceEditor.html';
+    this.DEFAULT_PERSONSEARCH_URL = '../HtmlPages/PersonSearch.html';
+    this.DEFAULT_MARRIAGESEARCH_URL = '../HtmlPages/MarriageSearch.html';
 
     this.selection = [];
     this.parishId = '';
@@ -41,6 +43,9 @@ AncSources.prototype = {
 
 
         $("body").on("click", "#add", $.proxy(function () { this.addSource('00000000-0000-0000-0000-000000000000'); return false; }, this));
+        $("body").on("click", "#viewmarriages", $.proxy(function () { this.addSource('00000000-0000-0000-0000-000000000000'); return false; }, this));
+        $("body").on("click", "#viewpersons", $.proxy(function () { this.addSource('00000000-0000-0000-0000-000000000000'); return false; }, this));
+        
         $("body").on("click", "#delete", $.proxy(function () { this.deleteSources(); return false; }, this));
         $("body").on("click", "#print", $.proxy(function () { this.printableSources(); return false; }, this));
         $("body").on("click", "#select_return", $.proxy(function () { this.returnselection(); return false; }, this));
@@ -140,6 +145,14 @@ AncSources.prototype = {
         window.location.href = url;
     },
 
+    openPersons:function(){
+        var redirectWindow = window.open(this.DEFAULT_PERSONSEARCH_URL + '?test=1', '_blank');
+        redirectWindow.location;
+    },
+    
+    openMarriages:function(){
+        
+    },
 
     createQryString: function () {
 
