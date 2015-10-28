@@ -79,7 +79,7 @@ BatchSearch.prototype = {
         var tableData = {
             column1Func : function(){console.log('hello1');},
             column4Func : function(){console.log('hello4');},
-            column5Func : function(id){
+            column5Func : function(evt, id){
                 console.log('hello5');
                 that.DeleteBatch(id);
                 return false;
