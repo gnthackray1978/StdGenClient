@@ -140,26 +140,35 @@ BatchSearch.prototype = {
     },
     ImportPersons: function () {
         this.postParams.url = this.DEFAULT_INSERTPERSONS_URL;
-        this.postParams.batchRef = String($('#txtDescription').val());
-        this.postParams.data = { sheetUrl: this.DEFAULT_PERSONSHEET_URL };
+   
+        this.postParams.data = { 
+            sheetUrl: this.DEFAULT_PERSONSHEET_URL, 
+            batchRef: String($('#txtDescription').val())
+        };
         this.ancUtils.twaPostJSON(this.postParams);
     },
     ImportMarriages: function () {
         this.postParams.url = this.DEFAULT_INSERTMARRIAGES_URL;
-        this.postParams.batchRef = String($('#txtDescription').val());
-        this.postParams.data = { sheetUrl: this.DEFAULT_MARRIAGESHEET_URL};
+        this.postParams.data = { 
+            sheetUrl: this.DEFAULT_MARRIAGESHEET_URL,
+            batchRef: String($('#txtDescription').val())
+        };
         this.ancUtils.twaPostJSON(this.postParams);
     },
     ImportParishs: function () {
         this.postParams.url = this.DEFAULT_INSERTPARISHS_URL;
-        this.postParams.batchRef = String($('#txtDescription').val());
-        this.postParams.data = { sheetUrl: this.DEFAULT_PARISHSHEET_URL};
+        this.postParams.data = { 
+            sheetUrl: this.DEFAULT_PARISHSHEET_URL,
+            batchRef: String($('#txtDescription').val())
+        };
         this.ancUtils.twaPostJSON(this.postParams);
     },
     ImportSources: function () {
         this.postParams.url = this.DEFAULT_INSERTSOURCES_URL;
-        this.postParams.batchRef = String($('#txtDescription').val());
-        this.postParams.data = { sheetUrl: this.DEFAULT_SOURCESHEET_URL};
+        this.postParams.data = { 
+            sheetUrl: this.DEFAULT_SOURCESHEET_URL,
+            batchRef: String($('#txtDescription').val())
+        };
         this.ancUtils.twaPostJSON(this.postParams);
     }
 
