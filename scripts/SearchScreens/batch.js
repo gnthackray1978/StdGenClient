@@ -78,7 +78,10 @@ BatchSearch.prototype = {
         var tableData = {
             column1Func : function(){console.log('hello1');},
             column4Func : function(){console.log('hello4');},
-            column5Func : function(){console.log('hello5');},
+            column5Func : function(id){
+                console.log('hello5');
+                this.DeleteBatch(id);
+            },
             rows : []
         }; 
 
@@ -133,9 +136,11 @@ BatchSearch.prototype = {
         this.getBatches();
     },
     
-    DeleteBatch: function () {
+    DeleteBatch: function (id) {
         this.postParams.url = this.DEFAULT_REMOVEBATCH_URL;
-        this.postParams.data = { batchId: this.qryStrUtils.convertToCSV(this.selection) };
+        this.postParams.data = { 
+            batchId: id
+        };
         this.ancUtils.twaPostJSON(this.postParams);
     },
     ImportPersons: function () {
