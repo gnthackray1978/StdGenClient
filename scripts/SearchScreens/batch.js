@@ -46,9 +46,10 @@ BatchSearch.prototype = {
         $('body').on("click", "#more", $.proxy(function () { panels.genericShowPanel('2'); return false; }, panels));
         $('body').on("click", "#refresh", $.proxy(function () { this.getBatches(); return false; }, this));
 
-        $('body').on("click", "#add", $.proxy(function () { this.AddSourceType(); return false; }, this));
-        $('body').on("click", "#delete", $.proxy(function () { this.DeleteRecord(); return false; }, this));
-
+        $('body').on("click", "#import_persons", $.proxy(function () { this.ImportPersons(); return false; }, this));
+        $('body').on("click", "#import_marriages", $.proxy(function () { this.ImportMarriages(); return false; }, this));
+        $('body').on("click", "#import_sources", $.proxy(function () { this.ImportSources(); return false; }, this));
+        $('body').on("click", "#import_parishs", $.proxy(function () { this.ImportParishs(); return false; }, this));
         
         // if (isActive == '1') {
         //     this.getBatches();
