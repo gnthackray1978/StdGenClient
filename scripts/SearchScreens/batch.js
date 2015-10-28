@@ -81,6 +81,7 @@ BatchSearch.prototype = {
             column5Func : function(id){
                 console.log('hello5');
                 this.DeleteBatch(id);
+                return false;
             },
             rows : []
         }; 
