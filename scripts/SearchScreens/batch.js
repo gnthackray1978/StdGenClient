@@ -74,13 +74,14 @@ BatchSearch.prototype = {
     processData: function (data) {
 
         var gDateTime = new GDateTime();
-
+        var that = this;
+        
         var tableData = {
             column1Func : function(){console.log('hello1');},
             column4Func : function(){console.log('hello4');},
             column5Func : function(id){
                 console.log('hello5');
-                this.DeleteBatch(id);
+                that.DeleteBatch(id);
                 return false;
             },
             rows : []
