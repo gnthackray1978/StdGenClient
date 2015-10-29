@@ -95,7 +95,7 @@ AncPersons.prototype = {
             }
 
 
-            if (this.qryStrUtils.getParameterByName('incb', 'true') == 'false') {
+            if (this.qryStrUtils.getParameterByName('incb', 'false') == 'false') {
                 $('#chkIncludeBirths').prop('checked', false);
             }
             else {
@@ -103,7 +103,7 @@ AncPersons.prototype = {
             }
 
 
-            if (this.qryStrUtils.getParameterByName('incd', 'true') == 'false') {
+            if (this.qryStrUtils.getParameterByName('incd', 'false') == 'false') {
                 $('#chkIncludeDeaths').prop('checked', false);
             }
             else {
