@@ -211,18 +211,26 @@ AncSources.prototype = {
                     ref : value.SourceYearTo
                 },
                 column3 : {
+                    isLink :false,
+                    ref : value.PersonCount
+                },
+                column4 : {
+                    isLink :false,
+                    ref : value.MarriageCount
+                },
+                column5 : {
                     isLink :true,
                     href : that.DEFAULT_SOURCEEDITOR_URL+_loc,
                     ref : 'Edit'
                 },
-                column4 : {
+                column6 : {
                     isLink :true,
                     key :true,
                     title : value.SourceRef,
                     ref : value.SourceRef,
                     className : 'sourceref'
                 },
-                column5 : {
+                column7 : {
                     isLink :false,
                     title : value.SourceDesc,
                     ref : value.SourceDesc,
