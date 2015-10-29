@@ -104,6 +104,8 @@ TableMaker.prototype = {
         tableRow += that.makeColumn(3,rowData.idx, rowData.id, rowData.column3.isLink, rowData.column3.ref,rowData.column3.className,rowData.column3.title,rowData.column3.href,rowData.column3.key);
         tableRow += that.makeColumn(4,rowData.idx, rowData.id, rowData.column4.isLink, rowData.column4.ref,rowData.column4.className,rowData.column4.title,rowData.column4.href,rowData.column4.key);
         tableRow += that.makeColumn(5,rowData.idx, rowData.id, rowData.column5.isLink, rowData.column5.ref,rowData.column5.className,rowData.column5.title,rowData.column5.href,rowData.column5.key);
+        tableRow += that.makeColumn(6,rowData.idx, rowData.id, rowData.column6.isLink, rowData.column6.ref,rowData.column6.className,rowData.column6.title,rowData.column6.href,rowData.column6.key);
+        tableRow += that.makeColumn(7,rowData.idx, rowData.id, rowData.column7.isLink, rowData.column7.ref,rowData.column7.className,rowData.column7.title,rowData.column7.href,rowData.column7.key);
         
         tableRow += '</tr>';
         
