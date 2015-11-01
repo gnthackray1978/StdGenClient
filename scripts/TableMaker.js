@@ -46,7 +46,7 @@ TableMaker.prototype = {
             console.log('testtesttest');
             var colIdx = evt.target.parentElement.attributes["data-col"].value;
             var idVal = evt.target.parentElement.attributes["data-id"].value;
-            var parentIdVal = evt.target.parentElement.attributes["data-parent"].value;
+            var parentIdVal = evt.target.parentElement.attributes["data-parentId"].value;
             var href = evt.target.parentElement.attributes["href"].value;
             
             href = href === undefined ? '' : href;
