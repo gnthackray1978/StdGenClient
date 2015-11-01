@@ -257,7 +257,7 @@ AncPersons.prototype = {
             }
                
                 
-            if (value.Spouse === ''){
+            if (value.Spouse != ''){
                 _father = value.Spouse;
             }
             
