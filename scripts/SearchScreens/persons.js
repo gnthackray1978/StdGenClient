@@ -3,9 +3,8 @@ var JSMaster,QryStrUtils,AncUtils,Panels;
 var AncPersons = function () {
     this.tableMaker = new TableMaker();
     this.qryStrUtils = new QryStrUtils();
-    this.selectorTools = new SelectorTools();
     this.ancUtils = new AncUtils();
-    this.pager = new Pager();
+   
     this.DEFAULT_PERSONSELECT_URL = '/PersonService/Get/Select';
     this.DEFAULT_PERSONDELETE_URL = '/PersonService/Delete';
     this.DEFAULT_PERSONASSIGNLOCATS_URL = '/PersonService/AssignLocats';
@@ -20,7 +19,6 @@ var AncPersons = function () {
     this.DEFAULT_PERSONEDITOR_URL = '../HtmlPages/PersonEditor.html';
     this.DEFAULT_SOURCEEDITOR_URL = '../HtmlPages/SourceEditor.html';
 
-    this.selection = [];
     this.parishId = '';
     this.sourceIds = '';
 
@@ -56,13 +54,8 @@ AncPersons.prototype = {
         $('body').on("click", "#remove-trees", $.proxy(function () { this.RemoveSources(); return false; }, this));
         $('body').on("click", "#add-tree", $.proxy(function () { this.SetSources(); return false; }, this));
         
-      //  $('body').on("click", "#sson", $.proxy(function () { this.SetRelation('3'); return false; }, this));
         $('body').on("click", "#remove", $.proxy(function () { this.SetRemoveLink(); return false; }, this));
         $('body').on("click", "#merge", $.proxy(function () { this.SetMergeSources(); return false; }, this));
-    //    $('body').on("click", "#sdau", $.proxy(function () { this.SetRelation('5'); return false; }, this));
-     //   $('body').on("click", "#sbro", $.proxy(function () { this.SetRelation('6'); return false; }, this));
-    //    $('body').on("click", "#ssis", $.proxy(function () { this.SetRelation('7'); return false; }, this));
-
         $('body').on("click", "#sbint", $.proxy(function () { this.sort('BirthInt'); return false; }, this));
         $('body').on("click", "#sdint", $.proxy(function () { this.sort('DeathInt'); return false; }, this));
 
@@ -366,7 +359,6 @@ AncPersons.prototype = {
         this.ancUtils.twaGetJSON(this.DEFAULT_SOURCESELECT_URL, params, function (data) {
             var tableBody = '';
             $.each(data.serviceSources, function (source, sourceInfo) {
-                //<option value="volvo">Volvo</option> //sourceInfo.SourceDesc           
                 tableBody += '<option value="' + sourceInfo.SourceId + '">' + sourceInfo.SourceRef + '</option>';
             });
             if (tableBody !== '') $('#tree-select').html(tableBody);
@@ -396,7 +388,7 @@ AncPersons.prototype = {
 
     DeleteRecord: function () {
         this.postParams.url = this.DEFAULT_PERSONDELETE_URL;
-        this.postParams.data = { personId: this.qryStrUtils.convertToCSV(this.selection) };
+        this.postParams.data = { personId: this.qryStrUtils.convertToCSV(this.tableMaker.selection) };
         this.ancUtils.twaPostJSON(this.postParams);
     },
 
@@ -411,7 +403,7 @@ AncPersons.prototype = {
 
     SetDuplicates: function () {
         this.postParams.url = this.DEFAULT_PERSONSETDUPES_URL;
-        this.postParams.data = { persons: this.qryStrUtils.convertToCSV(this.selection) };
+        this.postParams.data = { persons: this.qryStrUtils.convertToCSV(this.tableMaker.selection) };
         this.ancUtils.twaPostJSON(this.postParams);
     },
 
@@ -421,31 +413,31 @@ AncPersons.prototype = {
 
     SetRelation: function (relationid) {
         this.postParams.url = this.DEFAULT_PERSONSETDUPES_URL;
-        this.postParams.data = { persons: this.qryStrUtils.convertToCSV(this.selection), relationType: relationid };
+        this.postParams.data = { persons: this.qryStrUtils.convertToCSV(this.tableMaker.selection), relationType: relationid };
         this.ancUtils.twaPostJSON(this.postParams);
     },
 
     SetRemoveLink: function () {
         this.postParams.url = this.DEFAULT_PERSONREMOVELINKS_URL;
-        this.postParams.data = { person: this.qryStrUtils.convertToCSV(this.selection)};
+        this.postParams.data = { person: this.qryStrUtils.convertToCSV(this.tableMaker.selection)};
         this.ancUtils.twaPostJSON(this.postParams);
     },
     
     SetMergeSources: function(){
         this.postParams.url = this.DEFAULT_PERSONMERGE_URL;
-        this.postParams.data = { person: this.qryStrUtils.convertToCSV(this.selection) };
+        this.postParams.data = { person: this.qryStrUtils.convertToCSV(this.tableMaker.selection) };
         this.ancUtils.twaPostJSON(this.postParams);
     },
 
     SetSources: function () {
         this.postParams.url = this.DEFAULT_SETSOURCE_URL;
-        this.postParams.data = { record:this.qryStrUtils.convertToCSV(this.selection),sources: $("#tree-select").val()};
+        this.postParams.data = { record:this.qryStrUtils.convertToCSV(this.tableMaker.selection),sources: $("#tree-select").val()};
         this.ancUtils.twaPostJSON(this.postParams);
     },
 
     RemoveSources: function () {
         this.postParams.url = this.DEFAULT_REMOVESOURCE_URL;
-        this.postParams.data = { record: this.qryStrUtils.convertToCSV(this.selection) };
+        this.postParams.data = { record: this.qryStrUtils.convertToCSV(this.tableMaker.selection) };
         this.ancUtils.twaPostJSON(this.postParams);
     }
 

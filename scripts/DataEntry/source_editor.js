@@ -71,18 +71,13 @@ AncSourceEditor.prototype = {
 
    processData: function(data) {
 
-    // public string AddPerson(string personId, string birthparishId,string deathparishId, string referenceparishId, string ismale, string years, string months, string weeks, string days)
-
-
 
         $('#txtSourceRef').val(data.SourceRef);
         $('#txtSourceDescription').val(data.SourceDesc);
-
         $('#txtLowerDate').val(data.SourceDateStr);
         $('#txtUpperDate').val(data.SourceDateStrTo);
         $('#txtOriginalLoc').val(data.OriginalLocation);
-
-
+        $('#txtSourceId').val(data.SourceId);
         $('#txtNotRdOnly').val(data.SourceNotes);
 
         if (data.IsCopyHeld === false) {
@@ -92,14 +87,12 @@ AncSourceEditor.prototype = {
             $('#chkIsCopyHeld').prop('checked', true);
         }
 
-
         if (data.IsViewed === false) {
             $('#chkIsViewed').prop('checked', false);
         }
         else {
             $('#chkIsViewed').prop('checked', true);
         }
-
 
         if (data.IsThackrayFound === false) {
             $('#chkIsThackrayFound').prop('checked', false);
@@ -113,8 +106,6 @@ AncSourceEditor.prototype = {
         this.qryStrUtils.updateQryPar('pids', data.Parishs);
 
         this.qryStrUtils.updateQryPar('fids', data.FileIds);
-
-
 
         this.ancSelectorParishs.init('#parishselector');
 
@@ -135,8 +126,6 @@ AncSourceEditor.prototype = {
             $('#new-descrip').val($(event.currentTarget).closest('tr').attr('data-desc'));
             return false;
         }, this));
-
-
 
         $('body').on("click", ".file-remove", $.proxy(function (event) {
             var row = $(event.currentTarget).closest('tr').get(0);//.remove();
@@ -184,7 +173,6 @@ AncSourceEditor.prototype = {
 
             return false;
         }, this));
-       
        
         $('body').on("click", "#new-add", $.proxy(function (event) {
             
