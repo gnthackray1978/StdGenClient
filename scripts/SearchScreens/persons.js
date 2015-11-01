@@ -1,6 +1,7 @@
 var JSMaster,QryStrUtils,AncUtils,Panels;
 
 var AncPersons = function () {
+    this.tableMaker = new TableMaker();
     this.qryStrUtils = new QryStrUtils();
     this.selectorTools = new SelectorTools();
     this.ancUtils = new AncUtils();
@@ -205,6 +206,141 @@ AncPersons.prototype = {
     },
 
     processData: function (data) {
+      
+        var that = this;
+
+        var tableData = {
+            column1Func : function(){console.log('hello1');},
+            column4Func : function(){console.log('hello4');},
+            column5Func : function(){console.log('hello5');},
+            rows : []
+        }; 
+
+        $.each(data.serviceSources, function (idx, value) {
+            var _path = window.location.hash;
+            _path = that.qryStrUtils.updateStrForQry(_loc, 'id', value.PersonId);
+            var _sourcePath = window.location.hash;
+            _sourcePath = that.qryStrUtils.updateStrForQry(_sourcePath, 'id', value.SourceId);
+            
+            var _dateStr ='';
+            var _loc ='';
+            var _father = value.FatherChristianName;
+            var _mother ='';
+            
+            
+            
+            if (value.SourceDateStr != ''){
+                _dateStr = value.SourceDateStr;
+            }
+            if( value.ReferenceYear !=0){
+                _dateStr = value.ReferenceYear;
+            }
+            if( value.BirthYear !=0 || value.DeathYear !=0){
+                _dateStr = value.BirthYear + '-' + value.DeathYear;
+            }
+            
+            if (value.SourceParishName != '') {
+                _loc = value.SourceParishName;
+            }
+            
+            if (value.ReferenceLocation != '') {
+                _loc = value.ReferenceLocation;
+            }
+            
+            
+            if (value.DeathLocation != '' || value.BirthLocation != '') {
+                if (value.DeathLocation == ''){
+                    _loc = value.BirthLocation;
+                } else {
+                    _loc = value.BirthLocation + ' -> '+value.DeathLocation;
+                }
+            }
+               
+                
+            if (value.Spouse === ''){
+                _father = value.Spouse;
+            }
+            
+            if(value.MotherChristianName == ''){
+                _mother = value.OtherSide;    
+            }
+            else
+            {
+                _mother = value.MotherChristianName;   
+            }
+            
+            
+            var rowObj = {
+                id :value.PersonId,
+                parentId :value.UniqueReference,
+                idx : idx,
+                column1 : {
+                    isLink :true,
+                    ref : value.Events
+                },
+                column2 : {
+                   isLink :true,
+                    href : that.DEFAULT_PERSONEDITOR_URL+_path,
+                    ref : 'Edit'
+                },
+                column3 : {
+                    isLink :false,
+                    className : 'dates',
+                    ref : _dateStr
+                },
+                column4 : {
+                    isLink :false,
+                    ref : _loc
+                },
+                column5 : {
+                    isLink :true,
+                    key :true,
+                    ref : value.ChristianName,
+                    href :''
+                },
+                column6 : {
+                    isLink :false,
+                    title : value.LinkedTrees == '' ? '' : value.LinkedTrees,
+                    ref : value.Surname,
+                    className : value.LinkedTrees == '' ? '' : 'associatedTrees'
+                },
+                column7 : {
+                    isLink :false,
+                    ref : _father,
+                    className : value.Spouse == '' ? 'parent' : 'spouse'
+                },
+                column8 : {
+                    isLink :false,
+                    ref : _mother 
+                },
+                column9 : {
+                    isLink :false,
+                    ref : value.MotherSurname 
+                },
+                column10 : {
+                    isLink :true,
+                    ref : value.SourceRef,
+                    href : that.DEFAULT_SOURCEEDITOR_URL+_sourcePath
+                }
+                
+                
+            };
+            
+            tableData.rows.push(rowObj);
+        });
+
+        var pagerparams = { ParentElement: 'pager',
+            Batch: data.Batch,
+            BatchLength: data.BatchLength,
+            Total: data.Total,
+            Function: this.getLink,
+            Context: this
+        };
+        
+        this.tableMaker.MakeBody(tableData,pagerparams);
+    },
+
+    processData_o: function (data) {
 
         var tableBody = '';
         var visibleRecords = [];

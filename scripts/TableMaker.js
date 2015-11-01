@@ -3,8 +3,8 @@ var TableMaker = function() {
     this.pager = new Pager();
     this.qryStrUtils = new QryStrUtils();
     this.tableData;
-    this.selection = [];
-    this.tpSelection ;
+    this.selectedRows = [];
+    this.tagDictionary ;
     this.tableId = 't1';
 }
 
@@ -14,13 +14,19 @@ TableMaker.prototype = {
         this.tableData = tableData;
         
         var tableBody = '';
-        this.tpSelection = [];
+        this.tagDictionary = [];
+        var visibleRecords = [];
     
         var that = this;
 
         $.each(tableData.rows, function (index, value) {
-            tableBody += that.makeRow(value);  
+            tableBody += that.makeRow(value); 
+            visibleRecords.push(value.id);
         });
+
+        if (this.tagDictionary !== undefined) {
+            this.tagDictionary = this.tagDictionary.RemoveInvalid(visibleRecords);
+        }
 
         if (tableBody !== '') {
             $('#search_bdy').html(tableBody);
@@ -34,7 +40,7 @@ TableMaker.prototype = {
             that.UpdateRecordCount('0');
         }
 
-        this.selectorTools.addlinks(this.tpSelection, this.processSelect, this);
+        this.selectorTools.addlinks(this.tagDictionary, this.processSelect, this);
         
         $('body').on("click", "." + this.tableId, function(evt){
             console.log('testtesttest');
@@ -85,7 +91,7 @@ TableMaker.prototype = {
         
         var hidPID = '<input type="hidden" name="RowId" id="RowId" value ="' + rowData.id + '"/>';
 
-        var arIdx = jQuery.inArray(rowData.id, that.selection);
+        var arIdx = jQuery.inArray(rowData.id, that.selectedRows);
 
         if (arIdx >= 0) {
             tableRow += '<tr class = "highLightRow">' + hidPID;
@@ -115,11 +121,11 @@ TableMaker.prototype = {
     makeColumn : function(idx,rowIdx, id, isLink, ref,classArg,titleArg,hrefArg, keyArg ){
             
         var col = '';
-        //this.tpSelection
+        //this.tagDictionary
         if(keyArg && isLink){
             col = '<td><a id= "s' + rowIdx + '" href="" ><div>' + ref + '</div></a></td>';
             if(id == undefined) console.log('id not set');
-            this.tpSelection.push({ key: 's' + rowIdx, value: id });
+            this.tagDictionary.push({ key: 's' + rowIdx, value: id });
             return col;
         }
         var classParam ='';
@@ -150,7 +156,7 @@ TableMaker.prototype = {
         
     processSelect: function (evt) {
         //'#search_bdy tr', "#source_id"
-       this.selection = this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#RowId");
+       this.selectedRows = this.selectorTools.handleSelection(evt, this.selectedRows, '#search_bdy tr', "#RowId");
         
         if(this.tableData && this.tableData.column1Func)
             this.tableData.column1Func(evt);
