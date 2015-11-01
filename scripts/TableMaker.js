@@ -24,8 +24,8 @@ TableMaker.prototype = {
             visibleRecords.push(value.id);
         });
 
-        if (this.tagDictionary !== undefined) {
-            this.tagDictionary = this.tagDictionary.RemoveInvalid(visibleRecords);
+        if (this.selectedRows !== undefined) {
+            this.selectedRows = this.selectedRows.RemoveInvalid(visibleRecords);
         }
 
         if (tableBody !== '') {
