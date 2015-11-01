@@ -212,7 +212,7 @@ AncPersons.prototype = {
         var tableData = {
             column1Func : function(evt, idx, parentId){
                 console.log('hello1');
-                
+                that.loadDupes(parentId);
             },
             column4Func : function(){console.log('hello4');},
             column5Func : function(){console.log('hello5');},
@@ -375,8 +375,8 @@ AncPersons.prototype = {
         return false;
     },
 
-    loadDupes: function (id) {
-        this.qryStrUtils.updateQryPar('_parentId', id);
+    loadDupes: function (parentId) {
+        this.qryStrUtils.updateQryPar('_parentId', parentId);
         this.getPersons('1');
     },
 
