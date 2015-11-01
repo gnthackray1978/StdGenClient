@@ -54,7 +54,12 @@ AncSourceEditor.prototype = {
        
        $('body').on("click", "#files", $.proxy(function () { panels.sourcesShowPanel('3'); return false; }, panels));
 
-
+       $('body').on("click", "#sourceId", $.proxy(function () { 
+           
+           var sourceId = $('#txtSourceId').val();
+           
+           return false; 
+       }, panels));
 
        this.load();
 

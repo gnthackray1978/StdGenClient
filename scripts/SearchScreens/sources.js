@@ -13,7 +13,7 @@ var AncSources = function () {
     this.DEFAULT_PERSONSEARCH_URL = '../HtmlPages/PersonSearch.html';
     this.DEFAULT_MARRIAGESEARCH_URL = '../HtmlPages/MarriageSearch.html';
 
-    this.selection = [];
+   // this.selection = [];
     this.parishId = '';
 
     this.postParams = { 
@@ -147,7 +147,7 @@ AncSources.prototype = {
     makeSourceList: function(){
         var parishLst = '';
 
-        $.each(this.tableMaker.selection, function (idx, val) {
+        $.each(this.tableMaker.selectedRows, function (idx, val) {
             if (idx > 0) {
                 parishLst += ',' + val;
             }
@@ -264,7 +264,7 @@ AncSources.prototype = {
     },
     deleteSources: function () {
         this.postParams.url = this.DEFAULT_SOURCEDELETE_URL;
-        this.postParams.data = { sourceId: this.qryStrUtils.convertToCSV(this.selection) };
+        this.postParams.data = { sourceId: this.qryStrUtils.convertToCSV(this.tableMaker.selectedRows) };
         this.ancUtils.twaPostJSON(this.postParams);
     },
     printableSources: function () {
