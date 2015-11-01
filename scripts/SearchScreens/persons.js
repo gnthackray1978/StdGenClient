@@ -216,7 +216,7 @@ AncPersons.prototype = {
             rows : []
         }; 
 
-        $.each(data.serviceSources, function (idx, value) {
+        $.each(data.servicePersons, function (idx, value) {
             var _path = window.location.hash;
             _path = that.qryStrUtils.updateStrForQry(_loc, 'id', value.PersonId);
             var _sourcePath = window.location.hash;
