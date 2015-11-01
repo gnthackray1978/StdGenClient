@@ -218,7 +218,7 @@ AncPersons.prototype = {
 
         $.each(data.servicePersons, function (idx, value) {
             var _path = window.location.hash;
-            _path = that.qryStrUtils.updateStrForQry(_loc, 'id', value.PersonId);
+            _path = that.qryStrUtils.updateStrForQry(_path, 'id', value.PersonId);
             var _sourcePath = window.location.hash;
             _sourcePath = that.qryStrUtils.updateStrForQry(_sourcePath, 'id', value.SourceId);
             
