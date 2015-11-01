@@ -210,7 +210,10 @@ AncPersons.prototype = {
         var that = this;
 
         var tableData = {
-            column1Func : function(){console.log('hello1');},
+            column1Func : function(evt, idx, parentId){
+                console.log('hello1');
+                
+            },
             column4Func : function(){console.log('hello4');},
             column5Func : function(){console.log('hello5');},
             rows : []
@@ -340,130 +343,6 @@ AncPersons.prototype = {
         this.tableMaker.MakeBody(tableData,pagerparams);
     },
 
-    processData_o: function (data) {
-
-        var tableBody = '';
-        var visibleRecords = [];
-        var dupeEvents = [];
-        var selectEvents = [];
-        var _idx = 0;
-        var that = this;
-
-
-        $.each(data.servicePersons, function (source, sourceInfo) {
-
-            var hidPID = '<input type="hidden" name="person_id" id="person_id" value ="' + sourceInfo.PersonId + '"/>';
-            var hidParID = '<input type="hidden" name="parent_id" id="parent_id" value ="' + sourceInfo.UniqueReference + '"/>';
-
-            var arIdx = jQuery.inArray(sourceInfo.PersonId, that.selection);
-
-            if (arIdx >= 0) {
-                tableBody += '<tr class = "highLightRow">' + hidPID + hidParID;
-            }
-            else {
-                tableBody += '<tr>' + hidPID + hidParID;
-            }
-
-            var _loc = window.location.hash;
-            _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', sourceInfo.PersonId);
-
-            tableBody += '<td><a id= "d' + _idx + '" href=""><div>' + sourceInfo.Events + '</div></a></td>';
-            dupeEvents.push({ key: 'd' + _idx, value: sourceInfo.UniqueReference });
-
-
-            tableBody += '<td><a href="' + that.DEFAULT_PERSONEDITOR_URL + _loc + '"><div> Edit </div></a></td>';
-
-
-            if (sourceInfo.SourceDateStr == '')
-                tableBody += '<td><div class = "dates" >' + sourceInfo.BirthYear + '-' + sourceInfo.DeathYear + '</div></td>';
-            else  
-                tableBody += '<td><div class = "dates" >' + sourceInfo.SourceDateStr + '</div></td>';
-             
-
-
-
-            if (sourceInfo.SourceParishName == '') {
-                
-                if (sourceInfo.DeathLocation == '') {
-                    tableBody += '<td><div>' + sourceInfo.BirthLocation + '</div></td>';
-                } else {
-                    tableBody += '<td><div>' + sourceInfo.BirthLocation + ' -> '+sourceInfo.DeathLocation + '</div></td>';
-                }
-                
-            } else {
-                tableBody += '<td><div>' + sourceInfo.SourceParishName + '</div></td>';
-            }
-
-
-            tableBody += '<td><a id= "s' + _idx + '" href="" ><div>' + sourceInfo.ChristianName + '</div></a></td>';
-            selectEvents.push({ key: 's' + _idx, value: sourceInfo.PersonId });
-
-
-            if (sourceInfo.LinkedTrees !== '')
-                tableBody += '<td><div class = "associatedTrees" title="' + sourceInfo.LinkedTrees + '">' + sourceInfo.Surname + '</div></td>';
-            else
-                tableBody += '<td><div>' + sourceInfo.Surname + '</div></td>';
-            
-
-
-            if (sourceInfo.Spouse === '')
-                tableBody += '<td><div class = "parent">' + sourceInfo.FatherChristianName + '</div></td>';
-            else
-                tableBody += '<td><div class = "spouse">' + sourceInfo.Spouse + '</div></td>';
-
-
-
-
-            tableBody += '<td><div>' + sourceInfo.MotherChristianName + '</div></td>';
-            tableBody += '<td><div>' + sourceInfo.MotherSurname + '</div></td>';
-         //   <td><div>' + sourceInfo.SourceRef + '</div></td>';
-
-            _loc = window.location.hash;
-            _loc = that.qryStrUtils.updateStrForQry(_loc, 'id', sourceInfo.SourceId);
-
-            tableBody += '<td><a href="' + this.DEFAULT_SOURCEEDITOR_URL + _loc + '"><div>' + sourceInfo.SourceRef + '</div></a></td>';
-            
-            
-            tableBody += '</tr>';
-
-            visibleRecords.push(sourceInfo.PersonId);
-            _idx++;
-        });
-
-        if (this.selection !== undefined) {
-            this.selection = this.selection.RemoveInvalid(visibleRecords);
-        }
-
-        if (tableBody !== '') {
-
-            $('#search_bdy').html(tableBody);
-
-            //create pager based on results
-            var pagerparams = { ParentElement: 'pager',
-                Batch: data.Batch,
-                BatchLength: data.BatchLength,
-                Total: data.Total,
-                Function: this.getLink,
-                Context: this
-            };
-
-            this.pager.createpager(pagerparams);
-
-            $('#reccount').html(data.Total + ' Persons');
-
-
-        }
-        else {
-            $('#search_bdy').html(tableBody);
-            $('#reccount').html('0 Persons');
-        }
-
-
-        this.selectorTools.addlinks(dupeEvents, this.loadDupes, this);
-
-        this.selectorTools.addlinks(selectEvents, this.processSelect, this);
-    },
-
     getSources: function () {
 
         var params = {};
@@ -499,10 +378,6 @@ AncPersons.prototype = {
     loadDupes: function (id) {
         this.qryStrUtils.updateQryPar('_parentId', id);
         this.getPersons('1');
-    },
-
-    processSelect: function (evt) {
-        this.selectorTools.handleSelection(evt, this.selection, '#search_bdy tr', "#person_id");
     },
 
     getLink: function (toPage) {
