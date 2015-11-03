@@ -388,7 +388,7 @@ AncPersons.prototype = {
 
     DeleteRecord: function () {
         this.postParams.url = this.DEFAULT_PERSONDELETE_URL;
-        this.postParams.data = { personId: this.qryStrUtils.convertToCSV(this.tableMaker.selection) };
+        this.postParams.data = { personId: this.qryStrUtils.convertToCSV(this.tableMaker.selectedRows) };
         this.ancUtils.twaPostJSON(this.postParams);
     },
 
@@ -403,7 +403,7 @@ AncPersons.prototype = {
 
     SetDuplicates: function () {
         this.postParams.url = this.DEFAULT_PERSONSETDUPES_URL;
-        this.postParams.data = { persons: this.qryStrUtils.convertToCSV(this.tableMaker.selection) };
+        this.postParams.data = { persons: this.qryStrUtils.convertToCSV(this.tableMaker.selectedRows) };
         this.ancUtils.twaPostJSON(this.postParams);
     },
 
@@ -413,31 +413,31 @@ AncPersons.prototype = {
 
     SetRelation: function (relationid) {
         this.postParams.url = this.DEFAULT_PERSONSETDUPES_URL;
-        this.postParams.data = { persons: this.qryStrUtils.convertToCSV(this.tableMaker.selection), relationType: relationid };
+        this.postParams.data = { persons: this.qryStrUtils.convertToCSV(this.tableMaker.selectedRows), relationType: relationid };
         this.ancUtils.twaPostJSON(this.postParams);
     },
 
     SetRemoveLink: function () {
         this.postParams.url = this.DEFAULT_PERSONREMOVELINKS_URL;
-        this.postParams.data = { person: this.qryStrUtils.convertToCSV(this.tableMaker.selection)};
+        this.postParams.data = { person: this.qryStrUtils.convertToCSV(this.tableMaker.selectedRows)};
         this.ancUtils.twaPostJSON(this.postParams);
     },
     
     SetMergeSources: function(){
         this.postParams.url = this.DEFAULT_PERSONMERGE_URL;
-        this.postParams.data = { person: this.qryStrUtils.convertToCSV(this.tableMaker.selection) };
+        this.postParams.data = { person: this.qryStrUtils.convertToCSV(this.tableMaker.selectedRows) };
         this.ancUtils.twaPostJSON(this.postParams);
     },
 
     SetSources: function () {
         this.postParams.url = this.DEFAULT_SETSOURCE_URL;
-        this.postParams.data = { record:this.qryStrUtils.convertToCSV(this.tableMaker.selection),sources: $("#tree-select").val()};
+        this.postParams.data = { record:this.qryStrUtils.convertToCSV(this.tableMaker.selectedRows),sources: $("#tree-select").val()};
         this.ancUtils.twaPostJSON(this.postParams);
     },
 
     RemoveSources: function () {
         this.postParams.url = this.DEFAULT_REMOVESOURCE_URL;
-        this.postParams.data = { record: this.qryStrUtils.convertToCSV(this.tableMaker.selection) };
+        this.postParams.data = { record: this.qryStrUtils.convertToCSV(this.tableMaker.selectedRows) };
         this.ancUtils.twaPostJSON(this.postParams);
     }
 
