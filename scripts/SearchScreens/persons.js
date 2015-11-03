@@ -258,7 +258,7 @@ AncPersons.prototype = {
             }
             
             if(value.MotherChristianName == ''){
-                _mother = value.OtherSide;    
+                _mother = value.OtherSide == undefined ? '' : value.OtherSide;    
             }
             else
             {
