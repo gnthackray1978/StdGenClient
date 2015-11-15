@@ -84,6 +84,8 @@ AncSourceEditor.prototype = {
         $('#txtOriginalLoc').val(data.OriginalLocation);
         $('#txtSourceId').val(data.SourceId);
         $('#txtNotRdOnly').val(data.SourceNotes);
+//txtVirtualLocation
+        $('#txtVirtualLocation').val(data.VirtualLocation);
 
         if (data.IsCopyHeld === false) {
             $('#chkIsCopyHeld').prop('checked', false);
