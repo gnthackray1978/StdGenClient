@@ -18,7 +18,8 @@ var AncPersons = function () {
     this.DEFAULT_SOURCESELECT_URL = '/Sources/Select';
     this.DEFAULT_PERSONEDITOR_URL = '../HtmlPages/PersonEditor.html';
     this.DEFAULT_SOURCEEDITOR_URL = '../HtmlPages/SourceEditor.html';
-
+    this.DEFAULT_MARRIAGEEDITOR_URL = '../HtmlPages/MarriageEditor.html';
+    
     this.parishId = '';
     this.sourceIds = '';
 
@@ -218,6 +219,9 @@ AncPersons.prototype = {
             var _sourcePath = window.location.hash;
             _sourcePath = that.qryStrUtils.updateStrForQry(_sourcePath, 'id', value.SourceId);
             
+            var _marriagePath = window.location.hash;
+            _marriagePath = that.qryStrUtils.updateStrForQry(_marriagePath, 'id', value.MarriageId);
+            
             var _dateStr ='';
             var _loc ='';
             var _father = value.FatherChristianName;
@@ -265,6 +269,17 @@ AncPersons.prototype = {
                 _mother = value.MotherChristianName;   
             }
             
+            var c11Ref , c11Href;
+            
+            if (value.MarriageId != '00000000-0000-0000-0000-000000000000'){
+                c11Ref = 'Marriage';
+                c11Href = that.DEFAULT_MARRIAGEEDITOR_URL+_marriagePath;
+            }
+            else
+            {
+                c11Ref = value.SourceRef;
+                c11Href = that.DEFAULT_SOURCEEDITOR_URL+_sourcePath;
+            }
             
             var rowObj = {
                 id :value.PersonId,
