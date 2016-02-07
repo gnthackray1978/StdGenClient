@@ -330,8 +330,8 @@ AncPersons.prototype = {
                 },
                 column10 : {
                     isLink :true,
-                    ref : value.SourceRef,
-                    href : that.DEFAULT_SOURCEEDITOR_URL+_sourcePath
+                    ref : c11Ref,
+                    href : c11Href
                 }
                 
                 
