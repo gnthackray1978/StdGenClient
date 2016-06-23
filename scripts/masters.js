@@ -207,7 +207,6 @@ JSMaster.prototype = {
 
         headersection += '<div id="fb-root">';
         headersection += '<fb:login-button autologoutlink="true" perms="email,user_birthday,status_update"></fb:login-button>';
-     //   headersection += '<fb:login-button show-faces="false" width=200px!important max-rows="1"></fb:login-button>';
         headersection += '</div>';
 
         headersection += '<div id = "usr_nam"></div>';
